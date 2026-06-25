@@ -19,7 +19,7 @@ const {
   author = 'Curiosity Log',
 } = Astro.props;
 
-const siteUrl = Astro.site ?? 'https://curiositylog.com';
+const siteUrl = Astro.site ?? 'https://curiosity.asrithcheepurupalli.tech';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL(image, siteUrl);
 const pageTitle = title.includes('Curiosity Log') ? title : `${title} — Curiosity Log`;

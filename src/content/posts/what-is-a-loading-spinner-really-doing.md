@@ -15,22 +15,22 @@ But is it? And does the spinner actually know?
 
 There are two kinds of loading indicators, and they represent fundamentally different things.
 
-The first is a *determinate* indicator: a progress bar that fills from 0% to 100%. This requires the system to actually know how much work remains — file size, total records, steps in a pipeline. The bar's position is a real measurement.
+The first is a *determinate* indicator: a progress bar that fills from 0% to 100%. This requires the system to actually know how much work remains: file size, total records, steps in a pipeline. The bar's position is a real measurement.
 
-The second — and far more common — is an *indeterminate* indicator: the spinner. It has no information about progress. It simply rotates. It is not tracking anything. It is a signal that says "I have not crashed, and I am still trying."
+The second (and far more common) is an *indeterminate* indicator: the spinner. It has no information about progress. It simply rotates. It is not tracking anything. It is a signal that says "I have not crashed, and I am still trying."
 
 ```
 Determinate  → system knows remaining work → progress bar
 Indeterminate → system does not know        → spinner / pulse
 ```
 
-The spinner exists because of a real problem in user psychology. Studies on perceived wait time — beginning with research in the 1990s on elevator door-close buttons — consistently show that *visible activity* during a wait makes the wait feel shorter. A blank screen feels longer than a spinning one, even if the actual duration is identical.
+The spinner exists because of a real problem in user psychology. Studies on perceived wait time, beginning with research in the 1990s on elevator door-close buttons, consistently show that *visible activity* during a wait makes the wait feel shorter. A blank screen feels longer than a spinning one, even if the actual duration is identical.
 
 The animation is not informational. It's therapeutic.
 
 Some teams discovered the inverse of this: that a progress bar that moves quickly to 90% and then stalls feels *worse* than a spinner that never claimed to know anything. False precision is more frustrating than honest uncertainty.
 
-The best loading experiences often add just a little more: a message that changes every few seconds ("Fetching your data..." → "Almost there..." → "Just a moment..."). This works not because it's accurate, but because it mimics a person who's keeping you updated — and that social contract, however simulated, makes waiting tolerable.
+The best loading experiences often add just a little more: a message that changes every few seconds ("Fetching your data..." to "Almost there..." to "Just a moment..."). This works not because it's accurate, but because it mimics a person who's keeping you updated, and that social contract, however simulated, makes waiting tolerable.
 
 ## Reflection
 
@@ -40,4 +40,4 @@ The best loading experiences often add just a little more: a message that change
 
 *And sometimes that's the entire job.*
 
-— End of Log
+End of Log

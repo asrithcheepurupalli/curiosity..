@@ -3,7 +3,10 @@ import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  // Only build pages for published posts (not drafts, not future-dated).
+  const posts = (await getCollection('posts')).filter(
+    p => !p.data.draft && new Date(p.data.date).getTime() <= Date.now()
+  );
   return posts.map(post => ({
     params: { slug: post.slug },
     props: { post },
@@ -13,7 +16,9 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const allPosts = await getCollection('posts');
+const allPosts = (await getCollection('posts')).filter(
+  p => !p.data.draft && new Date(p.data.date).getTime() <= Date.now()
+);
 allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 const slugs = allPosts.map(p => p.slug);
 
@@ -38,16 +43,16 @@ const postJsonLd = {
   "author": {
     "@type": "Organization",
     "name": "Curiosity Log",
-    "url": "https://curiositylog.com"
+    "url": "https://curiosity.asrithcheepurupalli.tech"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Curiosity Log",
-    "url": "https://curiositylog.com"
+    "url": "https://curiosity.asrithcheepurupalli.tech"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://curiositylog.com/posts/${post.slug}`
+    "@id": `https://curiosity.asrithcheepurupalli.tech/posts/${post.slug}`
   }
 };
 ---
@@ -155,7 +160,7 @@ const postJsonLd = {
             <a
               class="share-btn"
               id="twitter-share-btn"
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=https://curiositylog.com/posts/${post.slug}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=https://curiosity.asrithcheepurupalli.tech/posts/${post.slug}`}
               target="_blank"
               rel="noopener noreferrer"
               title="Share on X"

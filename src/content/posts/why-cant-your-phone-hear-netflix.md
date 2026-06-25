@@ -51,4 +51,4 @@ This is exactly why a new standard called Auracast exists, broadcasting one sour
 
 *The room can still go silent. Everyone can still have their own immersion. You just have to ask for the sound after it has been set free, not before.*
 
-— End of Log
+End of Log

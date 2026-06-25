@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://curiositylog.com',
+  site: 'https://curiosity.asrithcheepurupalli.tech',
   integrations: [sitemap()],
   markdown: {
     shikiConfig: {

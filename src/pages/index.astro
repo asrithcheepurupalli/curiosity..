@@ -2,7 +2,10 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-const allPosts = (await getCollection('posts')).filter(p => !p.data.draft);
+// Hide drafts and any post whose date is still in the future (scheduled publishing).
+const allPosts = (await getCollection('posts')).filter(
+  p => !p.data.draft && new Date(p.data.date).getTime() <= Date.now()
+);
 
 allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
@@ -23,7 +26,7 @@ const siteJsonLd = {
   "@type": "Blog",
   "name": "Curiosity Log",
   "description": "Small questions about everyday things. A minimalist inquiry into the mechanics of the ordinary.",
-  "url": "https://curiositylog.com",
+  "url": "https://curiosity.asrithcheepurupalli.tech",
   "author": {
     "@type": "Organization",
     "name": "Curiosity Log"
@@ -33,7 +36,7 @@ const siteJsonLd = {
     "headline": p.data.title,
     "description": p.data.description,
     "datePublished": new Date(p.data.date).toISOString(),
-    "url": `https://curiositylog.com/posts/${p.slug}`
+    "url": `https://curiosity.asrithcheepurupalli.tech/posts/${p.slug}`
   }))
 };
 
