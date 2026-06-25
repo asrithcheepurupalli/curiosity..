@@ -60,6 +60,7 @@ const postJsonLd = {
 <Layout
   title={post.data.title}
   description={post.data.description}
+  image={`/og/${post.slug}.png`}
   type="article"
   publishedTime={new Date(post.data.date).toISOString()}
 >

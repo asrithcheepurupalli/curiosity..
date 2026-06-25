@@ -57,6 +57,14 @@ src/
 | `npm run dev`     | Local dev server at `localhost:4321`    |
 | `npm run build`   | Build the production site to `./dist/`  |
 | `npm run preview` | Preview the build locally               |
+| `npm run og`      | Regenerate per-post social cards         |
+
+## Social cards
+
+Each post has its own Open Graph image (its title on a branded card) under `public/og/`.
+They are committed as static assets. After adding or renaming posts, run `npm run og` to
+regenerate them (needs `rsvg-convert` / librsvg installed locally). Pages that are not posts
+use the default `public/og-image.png`.
 
 ## Deploy
 
