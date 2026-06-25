@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://curiositylog.com/sitemap-index.xml

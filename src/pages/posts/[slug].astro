@@ -1,0 +1,507 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const allPosts = await getCollection('posts');
+allPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const slugs = allPosts.map(p => p.slug);
+
+const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
+const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).toUpperCase();
+}
+const postJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": new Date(post.data.date).toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": "Curiosity Log",
+    "url": "https://curiositylog.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Curiosity Log",
+    "url": "https://curiositylog.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://curiositylog.com/posts/${post.slug}`
+  }
+};
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  publishedTime={new Date(post.data.date).toISOString()}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(postJsonLd)} />
+
+  <script define:vars={{ slugs }}>
+    window.__POSTS__ = slugs;
+  </script>
+
+  <div id="reading-progress-bar"></div>
+
+  <script>
+    const copyBtn = document.getElementById('copy-link-btn');
+    const nativeBtn = document.getElementById('native-share-btn');
+
+    if (navigator.share) {
+      nativeBtn!.style.display = '';
+    }
+
+    copyBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const text = copyBtn.querySelector('.share-btn-text') as HTMLElement;
+        const original = text.textContent;
+        text.textContent = 'Copied!';
+        copyBtn.classList.add('share-btn--success');
+        setTimeout(() => {
+          text.textContent = original;
+          copyBtn.classList.remove('share-btn--success');
+        }, 2000);
+      } catch {}
+    });
+
+    nativeBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.share({
+          title: document.title,
+          url: window.location.href,
+        });
+      } catch {}
+    });
+  </script>
+
+  <script>
+    const bar = document.getElementById('reading-progress-bar');
+    function updateProgress() {
+      if (!bar) return;
+      const content = document.querySelector('.post-content');
+      if (!content) return;
+      const scrollTop = window.scrollY;
+      const contentBottom = content.getBoundingClientRect().bottom + scrollTop;
+      const scrollEnd = contentBottom - window.innerHeight;
+      if (scrollEnd <= 0) {
+        bar.style.width = '100%';
+        return;
+      }
+      const progress = Math.min(Math.max(scrollTop / scrollEnd, 0), 1);
+      bar.style.width = (progress * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('load', updateProgress);
+    updateProgress();
+  </script>
+
+  <div class="post-page">
+    <div class="container">
+      <a href="/" class="back-link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Journal
+      </a>
+
+      <article class="post-article">
+        <header class="post-header">
+          <h1 class="post-title">{post.data.title}</h1>
+          <div class="post-meta">
+            <time class="label" datetime={post.data.date}>{formatDate(post.data.date)}</time>
+            <span class="meta-dot" aria-hidden="true">·</span>
+            <span class="label">{post.data.readingTime} min read</span>
+          </div>
+        </header>
+
+        <div class="post-content">
+          <Content />
+        </div>
+
+        <div class="share-bar" aria-label="Share this post">
+          <span class="share-label">Share</span>
+          <div class="share-actions">
+            <button class="share-btn" id="copy-link-btn" title="Copy link" aria-label="Copy link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+              </svg>
+              <span class="share-btn-text">Copy link</span>
+            </button>
+            <a
+              class="share-btn"
+              id="twitter-share-btn"
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=https://curiositylog.com/posts/${post.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Share on X"
+              aria-label="Share on X"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span class="share-btn-text">X</span>
+            </a>
+            <button class="share-btn share-native" id="native-share-btn" title="Share" aria-label="Share" style="display:none">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+              <span class="share-btn-text">Share</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      {(prevPost || nextPost) && (
+        <nav class="post-nav" aria-label="Post navigation">
+          <div class="post-nav-inner">
+            {prevPost ? (
+              <a href={`/posts/${prevPost.slug}`} class="post-nav-link post-nav-prev">
+                <span class="post-nav-label">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                  </svg>
+                  Previous
+                </span>
+                <span class="post-nav-title">{prevPost.data.title}</span>
+              </a>
+            ) : <div />}
+            {nextPost ? (
+              <a href={`/posts/${nextPost.slug}`} class="post-nav-link post-nav-next">
+                <span class="post-nav-label">
+                  Next
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </span>
+                <span class="post-nav-title">{nextPost.data.title}</span>
+              </a>
+            ) : <div />}
+          </div>
+        </nav>
+      )}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  #reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--accent);
+    z-index: 1000;
+    transition: width 0.05s linear;
+    pointer-events: none;
+  }
+
+  .post-page {
+    padding-top: calc(var(--spacing-unit) * 5);
+    padding-bottom: calc(var(--spacing-unit) * 12);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: calc(var(--spacing-unit) * 8);
+    transition: color 0.2s ease, transform 0.2s ease;
+    animation: fade-in 0.4s ease both;
+  }
+
+  .back-link:hover {
+    color: var(--text);
+    transform: translateX(-2px);
+  }
+
+  .post-header {
+    margin-bottom: calc(var(--spacing-unit) * 12);
+    padding-bottom: calc(var(--spacing-unit) * 6);
+    animation: fade-up 0.55s 0.1s ease both;
+  }
+
+  .post-title {
+    font-family: var(--font-body);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    max-width: 600px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+  }
+
+  .meta-dot {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+  }
+
+  .post-content {
+    max-width: 560px;
+    animation: fade-up 0.55s 0.2s ease both;
+  }
+
+  .post-content :global(h2) {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    margin-top: calc(var(--spacing-unit) * 10);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .post-content :global(h2)::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .post-content :global(p) {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .post-content :global(em) {
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .post-content :global(strong) {
+    font-weight: 500;
+  }
+
+  .post-content :global(blockquote) {
+    border-left: 2px solid var(--accent);
+    padding-left: calc(var(--spacing-unit) * 3);
+    margin: calc(var(--spacing-unit) * 5) 0;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .post-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--divider);
+    margin: calc(var(--spacing-unit) * 8) 0;
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    padding-left: calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .post-content :global(li) {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: calc(var(--spacing-unit));
+  }
+
+  .post-content :global(pre) {
+    border-radius: 0;
+  }
+
+  .post-content :global(p:last-child) {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--divider);
+    padding-top: calc(var(--spacing-unit) * 3);
+    margin-top: calc(var(--spacing-unit) * 8);
+  }
+
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 3);
+    max-width: 560px;
+    padding-top: calc(var(--spacing-unit) * 6);
+    margin-top: calc(var(--spacing-unit) * 2);
+    border-top: 1px solid var(--divider);
+    animation: fade-up 0.5s 0.3s ease both;
+  }
+
+  .share-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .share-actions {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--divider);
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .share-btn:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+  }
+
+  .share-btn--success {
+    color: var(--accent) !important;
+    border-color: var(--accent) !important;
+  }
+
+  .post-nav {
+    margin-top: calc(var(--spacing-unit) * 12);
+    padding-top: calc(var(--spacing-unit) * 6);
+    border-top: 1px solid var(--divider);
+    max-width: 560px;
+    animation: fade-up 0.5s 0.35s ease both;
+  }
+
+  .post-nav-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--spacing-unit) * 4);
+  }
+
+  .post-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-unit));
+    text-decoration: none;
+    padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 2);
+    min-height: 64px;
+    border: 1px solid var(--divider);
+    transition: border-color 0.22s ease, background-color 0.22s ease, transform 0.22s ease;
+  }
+
+  .post-nav-link:hover {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+
+  .post-nav-next {
+    text-align: right;
+  }
+
+  .post-nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.75);
+  }
+
+  .post-nav-next .post-nav-label {
+    justify-content: flex-end;
+  }
+
+  .post-nav-title {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  @media (max-width: 600px) {
+    .post-title {
+      font-size: 1.6rem;
+    }
+
+    .post-content {
+      max-width: 100%;
+    }
+
+    .post-nav-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .post-nav-next {
+      text-align: left;
+    }
+
+    .post-nav-next .post-nav-label {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #reading-progress-bar {
+      height: 3px;
+    }
+
+    .post-page {
+      padding-bottom: calc(var(--spacing-unit) * 8);
+    }
+
+    .post-nav-link {
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+    }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="404 — Curiosity Log"
+  description="This page could not be found."
+>
+  <div class="not-found-page">
+    <div class="container">
+      <div class="not-found-content">
+        <p class="label">Error 404</p>
+        <h1 class="not-found-heading">Page not found.</h1>
+        <div class="accent-line"></div>
+        <p class="not-found-body">Whatever you were looking for isn't here. It may have moved, or perhaps it never existed in the first place, which raises its own interesting questions.</p>
+        <a href="/" class="home-link">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Back to the archive
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .not-found-page {
+    padding-top: calc(var(--spacing-unit) * 16);
+    padding-bottom: calc(var(--spacing-unit) * 16);
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .not-found-content {
+    max-width: 480px;
+  }
+
+  .not-found-content .label {
+    display: block;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .not-found-heading {
+    font-family: var(--font-body);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+  }
+
+  .accent-line {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: calc(var(--spacing-unit) * 5);
+  }
+
+  .not-found-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .home-link {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit));
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .home-link:hover {
+    color: var(--text);
+  }
+</style>
