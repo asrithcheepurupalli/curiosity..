@@ -3,6 +3,7 @@ title: "Why Do Error Messages Say 'Something Went Wrong'?"
 date: "2025-02-01"
 readingTime: 5
 description: "The vaguest sentence in software is also, in a strange way, the most honest one."
+tags: ["technology", "interfaces", "design", "language"]
 ---
 
 ## Observation

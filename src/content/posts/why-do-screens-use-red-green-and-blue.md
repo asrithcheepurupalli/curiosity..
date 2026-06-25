@@ -3,6 +3,7 @@ title: "Why Do Screens Use Red, Green, and Blue?"
 date: "2027-01-24"
 readingTime: 2
 description: "A single white pixel turns out to be three colored dots conspiring to deceive the only three color sensors you own."
+tags: ["technology", "perception", "light", "science"]
 ---
 
 ## Observation

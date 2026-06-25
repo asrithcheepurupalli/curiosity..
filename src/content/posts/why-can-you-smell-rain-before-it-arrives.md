@@ -3,6 +3,7 @@ title: "Why Can You Smell Rain Before It Arrives?"
 date: "2026-11-17"
 readingTime: 2
 description: "The earthy scent that announces a storm is the breath of dry ground, lifted into the air by the first falling drops."
+tags: ["weather", "nature", "perception", "science"]
 ---
 
 ## Observation

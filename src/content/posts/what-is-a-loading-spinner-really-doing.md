@@ -3,6 +3,7 @@ title: "What Is a Loading Spinner Really Doing?"
 date: "2024-12-14"
 readingTime: 5
 description: "That spinning circle on your screen isn't showing you progress. It's managing your patience."
+tags: ["interfaces", "design", "psychology", "technology"]
 ---
 
 ## Observation

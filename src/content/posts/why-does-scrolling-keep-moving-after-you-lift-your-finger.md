@@ -3,6 +3,7 @@ title: "Why Does Scrolling Keep Moving After You Lift Your Finger?"
 date: "2026-12-20"
 readingTime: 2
 description: "A flat sheet of glass pretends to be a heavy wheel, coasting to a stop long after your thumb has gone."
+tags: ["technology", "interfaces", "design", "physics"]
 ---
 
 ## Observation

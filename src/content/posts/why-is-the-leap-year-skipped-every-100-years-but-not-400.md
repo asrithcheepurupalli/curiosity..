@@ -3,6 +3,7 @@ title: "Why Is the Leap Year Skipped Every 100 Years (but Not 400)?"
 date: "2026-10-14"
 readingTime: 2
 description: "The extra February day fixes most of the drift, then quietly cancels itself three times every four centuries to keep the calendar honest with the sun."
+tags: ["time", "measurement", "numbers", "history"]
 ---
 
 ## Observation

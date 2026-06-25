@@ -3,6 +3,7 @@ title: "Why Do We Knock on Wood?"
 date: "2026-06-25"
 readingTime: 5
 description: "A small reflex we reach for after tempting fate, and what it reveals about how the mind handles things it cannot control."
+tags: ["rituals", "psychology", "history"]
 ---
 
 ## Observation

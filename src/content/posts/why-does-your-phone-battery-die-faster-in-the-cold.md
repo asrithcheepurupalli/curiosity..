@@ -3,6 +3,7 @@ title: "Why Does Your Phone Battery Die Faster in the Cold?"
 date: "2024-06-10"
 readingTime: 5
 description: "A freezing morning, a dead phone, and the electrochemistry happening quietly inside your pocket."
+tags: ["technology", "physics", "science"]
 ---
 
 ## Observation

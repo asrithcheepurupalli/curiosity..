@@ -3,6 +3,7 @@ title: "Why Do Birds Sing The Loudest Right Before Sunrise?"
 date: "2026-11-13"
 readingTime: 2
 description: "In the cold half-light before dawn, the world is briefly louder than it will be all day, and the reasons are stranger than habit."
+tags: ["animals", "nature", "sound", "biology"]
 ---
 
 ## Observation

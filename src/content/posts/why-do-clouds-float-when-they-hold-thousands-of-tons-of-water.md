@@ -3,6 +3,7 @@ title: "Why Do Clouds Float When They Hold Thousands of Tons of Water?"
 date: "2027-01-12"
 readingTime: 2
 description: "A cloud carries the weight of a hundred elephants and still hangs in the air without effort, held up by nothing you can see."
+tags: ["weather", "nature", "physics", "science"]
 ---
 
 ## Observation

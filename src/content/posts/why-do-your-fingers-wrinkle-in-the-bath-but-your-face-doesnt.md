@@ -3,6 +3,7 @@ title: "Why Do Your Fingers Wrinkle in the Bath but Your Face Doesn't?"
 date: "2027-01-23"
 readingTime: 2
 description: "A long soak leaves your fingertips puckered while your cheeks stay smooth, and the reason runs not through your skin but through your nerves."
+tags: ["the-body", "biology", "science"]
 ---
 
 ## Observation

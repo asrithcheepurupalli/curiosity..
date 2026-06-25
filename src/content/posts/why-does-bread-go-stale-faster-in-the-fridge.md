@@ -3,6 +3,7 @@ title: "Why Does Bread Go Stale Faster in the Fridge?"
 date: "2027-01-18"
 readingTime: 2
 description: "A loaf chilled to keep it fresh turns dry and crumbly within a day, and the reason has almost nothing to do with losing water."
+tags: ["food", "kitchen", "science", "everyday-objects"]
 ---
 
 ## Observation

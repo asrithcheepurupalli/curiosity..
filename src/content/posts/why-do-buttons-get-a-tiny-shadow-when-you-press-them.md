@@ -3,6 +3,7 @@ title: "Why Do Buttons Get a Tiny Shadow When You Press Them?"
 date: "2027-02-25"
 readingTime: 3
 description: "A button you tap has no body to push down, yet it sinks anyway, and that small staged shadow is doing quiet work you almost never notice."
+tags: ["interfaces", "design", "perception", "technology"]
 ---
 
 ## Observation

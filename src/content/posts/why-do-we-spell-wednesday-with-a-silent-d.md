@@ -3,6 +3,7 @@ title: "Why Do We Spell 'Wednesday' With a Silent D?"
 date: "2027-02-08"
 readingTime: 2
 description: "The day we never quite say the way we write it, and the old god hiding inside the spelling."
+tags: ["language", "etymology", "history"]
 ---
 
 ## Observation

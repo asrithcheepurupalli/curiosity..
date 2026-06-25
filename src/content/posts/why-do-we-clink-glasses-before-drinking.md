@@ -3,6 +3,7 @@ title: "Why Do We Clink Glasses Before Drinking?"
 date: "2026-09-24"
 readingTime: 2
 description: "A small ringing collision of glass, traced from old fears of poison to the moment a shared drink finally feels complete."
+tags: ["rituals", "etiquette", "history", "sound"]
 ---
 
 ## Observation

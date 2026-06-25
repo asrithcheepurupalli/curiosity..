@@ -3,6 +3,7 @@ title: "Why Does Frost Land on the Windshield First?"
 date: "2026-08-12"
 readingTime: 2
 description: "On a clear autumn morning the car wears a sheet of white while the grass beside it stays merely damp, and the answer is hiding in the sky overhead."
+tags: ["weather", "nature", "science", "physics"]
 ---
 
 ## Observation

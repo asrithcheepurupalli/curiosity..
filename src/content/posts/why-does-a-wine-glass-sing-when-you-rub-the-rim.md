@@ -3,6 +3,7 @@ title: "Why Does a Wine Glass Sing When You Rub the Rim?"
 date: "2026-08-11"
 readingTime: 2
 description: "A wet fingertip circling glass becomes a bow, and the rim answers in a pure, held note that seems to come from nowhere."
+tags: ["sound", "physics", "everyday-objects"]
 ---
 
 ## Observation

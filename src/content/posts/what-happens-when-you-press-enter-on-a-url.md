@@ -3,6 +3,7 @@ title: "What Happens When You Press Enter on a URL?"
 date: "2024-08-22"
 readingTime: 6
 description: "The half-second between typing a web address and seeing a page is one of the most complex sequences in everyday computing."
+tags: ["technology", "interfaces", "science", "perception"]
 ---
 
 ## Observation

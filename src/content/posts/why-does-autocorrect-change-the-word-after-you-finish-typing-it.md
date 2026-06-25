@@ -3,6 +3,7 @@ title: "Why Does Autocorrect Change The Word After You Finish Typing It?"
 date: "2026-09-15"
 readingTime: 2
 description: "A small lag in the keyboard reveals that your phone is not reading letters, it is waiting for you to stop so it can read the whole word at once."
+tags: ["technology", "interfaces", "language"]
 ---
 
 ## Observation

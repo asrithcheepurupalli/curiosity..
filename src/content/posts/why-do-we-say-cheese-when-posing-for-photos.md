@@ -3,6 +3,7 @@ title: "Why Do We Say 'Cheese' When Posing For Photos?"
 date: "2027-03-21"
 readingTime: 2
 description: "A single word, repeated across a century of faces, quietly taught the whole world how to be photographed."
+tags: ["language", "rituals", "history", "etiquette"]
 ---
 
 ## Observation

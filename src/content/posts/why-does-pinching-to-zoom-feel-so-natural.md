@@ -3,6 +3,7 @@ title: "Why Does Pinching to Zoom Feel So Natural?"
 date: "2026-11-02"
 readingTime: 3
 description: "A look at why spreading two fingers to enlarge a photo feels less like operating a machine and more like handling a physical thing."
+tags: ["technology", "interfaces", "design", "perception"]
 ---
 
 ## Observation

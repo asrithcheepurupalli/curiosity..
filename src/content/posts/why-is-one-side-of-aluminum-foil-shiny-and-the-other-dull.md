@@ -3,6 +3,7 @@ title: "Why Is One Side of Aluminum Foil Shiny and the Other Dull?"
 date: "2026-12-31"
 readingTime: 2
 description: "A roll of kitchen foil hides a quiet record of how it was made, written in the difference between its two faces."
+tags: ["kitchen", "everyday-objects", "science", "light"]
 ---
 
 ## Observation

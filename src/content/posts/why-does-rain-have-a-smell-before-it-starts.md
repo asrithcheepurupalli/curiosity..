@@ -3,6 +3,7 @@ title: "Why Does Rain Have a Smell Before It Starts?"
 date: "2027-02-11"
 readingTime: 2
 description: "The scent that arrives just ahead of the first drops is older than the rain itself, lifted out of dry ground by bacteria and stone."
+tags: ["weather", "nature", "perception", "science"]
 ---
 
 ## Observation

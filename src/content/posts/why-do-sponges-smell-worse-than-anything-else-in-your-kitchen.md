@@ -3,6 +3,7 @@ title: "Why Do Sponges Smell Worse Than Anything Else in Your Kitchen?"
 date: "2026-08-30"
 readingTime: 3
 description: "A damp kitchen sponge holds more living bacteria than almost any surface in your home, and its smell is the quiet exhaust of an ecosystem you built by accident."
+tags: ["kitchen", "biology", "everyday-objects", "science"]
 ---
 
 ## Observation

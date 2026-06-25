@@ -3,6 +3,7 @@ title: "Why Do Your Eyes See a Floating Squiggle When You Stare at the Sky?"
 date: "2027-03-06"
 readingTime: 2
 description: "The drifting threads you notice against a blank blue sky are tiny shadows of debris inside your own eye, cast onto the retina from within."
+tags: ["the-body", "perception", "light", "biology"]
 ---
 
 ## Observation

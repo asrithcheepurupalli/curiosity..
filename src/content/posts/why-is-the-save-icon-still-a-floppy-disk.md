@@ -3,6 +3,7 @@ title: "Why Is the Save Icon Still a Floppy Disk?"
 date: "2026-06-25"
 readingTime: 5
 description: "A symbol that outlived the object it depicts, and what it tells us about how meaning detaches from its origin."
+tags: ["interfaces", "design", "technology", "history"]
 ---
 
 ## Observation

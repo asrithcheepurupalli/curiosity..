@@ -3,6 +3,7 @@ title: "Why Do Men Traditionally Walk On The Street Side Of The Sidewalk?"
 date: "2027-06-01"
 readingTime: 2
 description: "An old habit of walking nearest the road carries the memory of mud, chamber pots, and the quiet arithmetic of who absorbs the danger."
+tags: ["etiquette", "rituals", "history", "cities"]
 ---
 
 ## Observation

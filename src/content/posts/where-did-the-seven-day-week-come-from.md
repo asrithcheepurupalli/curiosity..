@@ -3,6 +3,7 @@ title: "Where Did the Seven-Day Week Come From?"
 date: "2026-09-04"
 readingTime: 2
 description: "The week is the one unit of time that answers to nothing in the sky, a Babylonian habit that outlived the gods who named it."
+tags: ["time", "history", "measurement", "numbers"]
 ---
 
 ## Observation

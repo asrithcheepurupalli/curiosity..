@@ -3,6 +3,7 @@ title: "Why Does a Paper Cut Hurt So Much More Than a Deeper Wound?"
 date: "2026-10-01"
 readingTime: 2
 description: "A thin slice from an ordinary sheet of paper can outscream a kitchen knife, and the reason lives in the crowded nerves of your fingertips."
+tags: ["the-body", "biology", "perception"]
 ---
 
 ## Observation

@@ -3,6 +3,7 @@ title: "Why Do Almost All Languages Have a Word Like 'Huh?'"
 date: "2027-04-06"
 readingTime: 2
 description: "A tiny syllable that surfaces in unrelated languages all over the world, doing the same small job in every one."
+tags: ["language", "sound", "psychology"]
 ---
 
 ## Observation

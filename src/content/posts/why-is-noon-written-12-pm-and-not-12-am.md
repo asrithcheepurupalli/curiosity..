@@ -3,6 +3,7 @@ title: "Why Is Noon Written 12 PM and Not 12 AM?"
 date: "2027-04-09"
 readingTime: 2
 description: "The clock splits the day at the exact moment its own labels stop making sense, and noon falls right on the seam."
+tags: ["time", "measurement", "language"]
 ---
 
 ## Observation

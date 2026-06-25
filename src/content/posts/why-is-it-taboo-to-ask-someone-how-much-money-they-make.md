@@ -3,6 +3,7 @@ title: "Why Is It Taboo to Ask Someone How Much Money They Make?"
 date: "2026-10-27"
 readingTime: 2
 description: "A friendly question that stops a conversation cold, and the quiet arithmetic of who benefits from the silence."
+tags: ["money", "etiquette", "psychology"]
 ---
 
 ## Observation

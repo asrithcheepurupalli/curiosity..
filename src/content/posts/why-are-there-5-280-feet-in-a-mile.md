@@ -3,6 +3,7 @@ title: "Why Are There 5,280 Feet in a Mile?"
 date: "2026-08-28"
 readingTime: 2
 description: "A tidy round mile turns out to be a treaty between a Roman marching unit and an English field plowed by oxen, signed off by a reluctant Parliament."
+tags: ["measurement", "history", "numbers"]
 ---
 
 ## Observation

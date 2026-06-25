@@ -3,6 +3,7 @@ title: "Why Does A Flag Flap Instead Of Just Leaning In The Wind?"
 date: "2026-07-30"
 readingTime: 2
 description: "A steady wind should hold the cloth taut, yet the flag insists on rippling, snapping, and rolling against the breeze that drives it."
+tags: ["physics", "weather", "science"]
 ---
 
 ## Observation

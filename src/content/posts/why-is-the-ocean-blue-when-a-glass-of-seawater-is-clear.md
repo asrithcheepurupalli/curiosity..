@@ -3,6 +3,7 @@ title: "Why Is The Ocean Blue When A Glass Of Seawater Is Clear?"
 date: "2026-08-06"
 readingTime: 2
 description: "A faint preference hidden in every drop of water only becomes visible once light has traveled far enough to pay for it."
+tags: ["nature", "light", "perception", "physics"]
 ---
 
 ## Observation

@@ -3,6 +3,7 @@ title: "Why Do Computers Start Counting From 0?"
 date: "2023-11-02"
 readingTime: 6
 description: "The origin of zero-based indexing, and what it reveals about the boundary between human intuition and machine logic."
+tags: ["technology", "numbers", "history", "science"]
 ---
 
 ## Observation

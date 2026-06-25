@@ -3,6 +3,7 @@ title: "Why Do Leaves Turn Red Before They Fall?"
 date: "2026-10-18"
 readingTime: 2
 description: "A maple flares scarlet in October, and the color turns out to be something the tree builds on purpose, late, while it quietly empties its own leaves."
+tags: ["nature", "biology", "science", "light"]
 ---
 
 ## Observation

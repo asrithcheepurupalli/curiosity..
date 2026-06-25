@@ -3,6 +3,7 @@ title: "Why Is It Rude To Point At Someone?"
 date: "2026-12-02"
 readingTime: 3
 description: "A single extended finger can hold a room still, and almost everyone learns to fear it before they can name why."
+tags: ["etiquette", "the-body", "rituals"]
 ---
 
 ## Observation

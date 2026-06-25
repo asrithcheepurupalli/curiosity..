@@ -3,6 +3,7 @@ title: "Why Is a Minute Sixty Seconds and Not One Hundred?"
 date: "2027-04-02"
 readingTime: 2
 description: "A small revolt against the tidy logic of tens, hiding in plain sight on every clock face we glance at without thinking."
+tags: ["time", "measurement", "numbers", "history"]
 ---
 
 ## Observation

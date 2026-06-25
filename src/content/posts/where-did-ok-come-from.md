@@ -3,6 +3,7 @@ title: "Where Did 'OK' Come From?"
 date: "2026-11-26"
 readingTime: 2
 description: "The most spoken word on Earth began as a throwaway pun in a Boston newspaper and survived because a presidential campaign needed a slogan."
+tags: ["language", "etymology", "history"]
 ---
 
 ## Observation

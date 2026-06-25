@@ -3,6 +3,7 @@ title: "Why Can't You Tickle Yourself?"
 date: "2026-09-09"
 readingTime: 2
 description: "Your own fingers run the same path a stranger's would, yet the laugh never arrives, because your brain saw the touch coming."
+tags: ["the-body", "perception", "psychology", "biology"]
 ---
 
 ## Observation

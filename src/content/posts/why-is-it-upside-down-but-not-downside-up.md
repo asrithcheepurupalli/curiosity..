@@ -3,6 +3,7 @@ title: "Why Is It 'Upside Down' but Not 'Downside Up'?"
 date: "2026-06-29"
 readingTime: 2
 description: "A look at how a tipped-over phrase froze around the part that moved, and why English quietly refuses to let certain words swap places."
+tags: ["language", "etymology", "perception"]
 ---
 
 ## Observation

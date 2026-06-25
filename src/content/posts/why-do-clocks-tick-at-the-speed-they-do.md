@@ -3,6 +3,7 @@ title: "Why Do Clocks Tick at the Speed They Do?"
 date: "2026-10-13"
 readingTime: 2
 description: "The steady one-tick-per-second pulse we hear everywhere is not a human choice but an accident of how long a pendulum about a meter long takes to swing."
+tags: ["time", "measurement", "physics", "science"]
 ---
 
 ## Observation

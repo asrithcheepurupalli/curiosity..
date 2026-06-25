@@ -3,6 +3,7 @@ title: "Why Does Text On A Screen Still Pretend To Be Ink On Paper?"
 date: "2027-03-13"
 readingTime: 2
 description: "A glowing rectangle could be anything, yet it insists on being a white page with black marks, and we scroll it like a document instead of reading it as light."
+tags: ["interfaces", "design", "technology", "perception"]
 ---
 
 ## Observation

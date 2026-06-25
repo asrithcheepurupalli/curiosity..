@@ -3,6 +3,7 @@ title: "Why Do Restaurant Tomatoes Taste Like Nothing?"
 date: "2026-08-04"
 readingTime: 2
 description: "A tomato bred to blush evenly traded away the very sugar that once made it worth eating."
+tags: ["food", "science", "biology", "nature"]
 ---
 
 ## Observation

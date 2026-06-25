@@ -3,6 +3,7 @@ title: "Why Can You Sometimes See The Moon In Daylight?"
 date: "2027-06-07"
 readingTime: 2
 description: "A pale moon hangs in the blue afternoon, hiding in plain sight until you happen to look up."
+tags: ["nature", "light", "perception", "science"]
 ---
 
 ## Observation

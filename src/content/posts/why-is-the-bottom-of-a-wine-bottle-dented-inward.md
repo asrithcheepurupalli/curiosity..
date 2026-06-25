@@ -3,6 +3,7 @@ title: "Why Is the Bottom of a Wine Bottle Dented Inward?"
 date: "2026-11-06"
 readingTime: 2
 description: "The dimple pushed up into the base of a wine bottle is a fossil of how the glass was once made, still quietly doing useful work centuries later."
+tags: ["everyday-objects", "history", "design"]
 ---
 
 ## Observation

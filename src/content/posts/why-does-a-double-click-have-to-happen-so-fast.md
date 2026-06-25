@@ -3,6 +3,7 @@ title: "Why Does A Double-Click Have To Happen So Fast?"
 date: "2027-01-15"
 readingTime: 2
 description: "The small panic of a missed double-click reveals a hidden timing window your computer has been measuring against your hand all along."
+tags: ["interfaces", "technology", "time", "perception"]
 ---
 
 ## Observation

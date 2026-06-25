@@ -3,6 +3,7 @@ title: "Why Does Snow Make Everything Go Quiet?"
 date: "2027-05-08"
 readingTime: 2
 description: "Fresh snow does not just cover the world, it muffles it, turning a familiar street into a held breath."
+tags: ["weather", "nature", "sound", "science"]
 ---
 
 ## Observation

@@ -3,6 +3,7 @@ title: "Why Do We Say 'How Are You?' When We Don't Want An Answer?"
 date: "2026-11-19"
 readingTime: 2
 description: "A look at the empty little greeting that asks a question nobody intends to answer, and the quiet social work it performs."
+tags: ["language", "etiquette", "rituals", "psychology"]
 ---
 
 ## Observation

@@ -3,6 +3,7 @@ title: "Why Do Cutting Boards Warp If You Wash Them Wrong?"
 date: "2026-08-21"
 readingTime: 2
 description: "A wooden board left to soak on one side bows quietly overnight, the grain pulling against itself as it drinks unevenly."
+tags: ["kitchen", "everyday-objects", "science", "nature"]
 ---
 
 ## Observation

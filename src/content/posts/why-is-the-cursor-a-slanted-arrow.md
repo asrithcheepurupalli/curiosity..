@@ -3,6 +3,7 @@ title: "Why Is the Cursor a Slanted Arrow?"
 date: "2027-06-22"
 readingTime: 2
 description: "The mouse pointer leans to one side for a reason almost no one remembers, born from the limits of screens that no longer exist."
+tags: ["interfaces", "design", "technology", "history"]
 ---
 
 ## Observation

@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  // Only published posts (not drafts, not future-dated) contribute tags and pages.
+  const posts = (await getCollection('posts')).filter(
+    p => !p.data.draft && new Date(p.data.date).getTime() <= Date.now()
+  );
+  const tags = new Set<string>();
+  for (const p of posts) for (const t of (p.data.tags ?? [])) tags.add(t);
+
+  return [...tags].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => (p.data.tags ?? []).includes(tag))
+        .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+function formatMonthDay(dateStr: string) {
+  const d = new Date(dateStr);
+  return `${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+}
+---
+
+<Layout
+  title={`Posts tagged "${tag}"`}
+  description={`Every curiosity post about ${tag}. Small questions about ${tag} and the mechanics of the ordinary.`}
+>
+  <div class="tag-page">
+    <a href="/tags" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      All tags
+    </a>
+
+    <header class="tag-header">
+      <p class="label">Tag</p>
+      <h1 class="tag-title">{tag}</h1>
+      <p class="tag-count label">{posts.length} {posts.length === 1 ? 'entry' : 'entries'}</p>
+    </header>
+
+    <div class="archive-list">
+      {posts.map((post) => (
+        <a href={`/posts/${post.slug}`} class="archive-item">
+          <span class="archive-date label">{formatMonthDay(post.data.date)}</span>
+          <span class="archive-title">{post.data.title}</span>
+          <span class="archive-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .tag-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 10);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: calc(var(--spacing-unit));
+    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+    margin-bottom: calc(var(--spacing-unit) * 6); transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--text); }
+  .tag-header {
+    padding-bottom: calc(var(--spacing-unit) * 5);
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: calc(var(--spacing-unit) * 5);
+  }
+  .tag-title {
+    font-family: var(--font-mono); font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700; color: var(--text); margin: calc(var(--spacing-unit)) 0;
+  }
+  .tag-count { display: block; }
+  .archive-list { border-top: 1px solid var(--divider); }
+  .archive-item {
+    display: flex; align-items: center; gap: calc(var(--spacing-unit) * 3);
+    padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 2);
+    border-bottom: 1px solid var(--divider); text-decoration: none;
+    transition: background-color 0.22s ease, transform 0.22s ease;
+  }
+  .archive-item:hover { background: var(--accent-dim); transform: translateX(3px); }
+  .archive-item:hover .archive-arrow { opacity: 1; transform: translate(2px, -2px); color: var(--accent); }
+  .archive-date { min-width: 40px; font-size: 0.6rem; color: var(--text-muted); flex-shrink: 0; }
+  .archive-title { flex: 1; font-size: 1rem; color: var(--text); line-height: 1.4; }
+  .archive-arrow { opacity: 0.3; color: var(--text-muted); flex-shrink: 0; transition: all 0.15s ease; display: flex; }
+  @media (max-width: 480px) { .archive-date { display: none; } }
+</style>

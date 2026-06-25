@@ -3,6 +3,7 @@ title: "Why Does Your Stomach Growl When You're Hungry but Also When You're Not?
 date: "2027-06-10"
 readingTime: 2
 description: "The rumble you hear in a quiet room is not always a request for food, but the sound of a tract tidying itself between meals."
+tags: ["the-body", "biology", "food", "science"]
 ---
 
 ## Observation

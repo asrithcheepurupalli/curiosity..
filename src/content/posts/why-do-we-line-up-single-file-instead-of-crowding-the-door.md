@@ -3,6 +3,7 @@ title: "Why Do We Line Up Single File Instead Of Crowding The Door?"
 date: "2027-04-24"
 readingTime: 3
 description: "A quiet look at the orderly queue as a fairness machine, and how recent and fragile that invention turns out to be."
+tags: ["rituals", "etiquette", "psychology", "history"]
 ---
 
 ## Observation

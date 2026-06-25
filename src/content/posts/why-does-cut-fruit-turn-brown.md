@@ -3,6 +3,7 @@ title: "Why Does Cut Fruit Turn Brown?"
 date: "2027-03-15"
 readingTime: 2
 description: "A sliced apple slowly rusts on the cutting board, and a squeeze of lemon somehow holds the color back."
+tags: ["food", "kitchen", "science", "biology"]
 ---
 
 ## Observation

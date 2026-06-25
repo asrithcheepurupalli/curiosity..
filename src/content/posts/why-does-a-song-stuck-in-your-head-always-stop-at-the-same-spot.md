@@ -3,6 +3,7 @@ title: "Why Does a Song Stuck in Your Head Always Stop at the Same Spot?"
 date: "2027-03-29"
 readingTime: 2
 description: "An earworm is not a whole song but a small unfinished circle your brain keeps trying, and failing, to close."
+tags: ["psychology", "sound", "perception"]
 ---
 
 ## Observation

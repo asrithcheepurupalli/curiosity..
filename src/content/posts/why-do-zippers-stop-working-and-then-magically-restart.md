@@ -3,6 +3,7 @@ title: "Why Do Zippers Stop Working and Then Magically Restart?"
 date: "2026-07-12"
 readingTime: 2
 description: "A zipper jams on nothing you can see, then frees itself on the next pull, as if it changed its mind."
+tags: ["everyday-objects", "design", "physics"]
 ---
 
 ## Observation

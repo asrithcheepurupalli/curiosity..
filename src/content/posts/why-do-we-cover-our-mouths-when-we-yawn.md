@@ -3,6 +3,7 @@ title: "Why Do We Cover Our Mouths When We Yawn?"
 date: "2027-06-18"
 readingTime: 2
 description: "A reflexive hand rises to the face mid-yawn, carrying the residue of a fear about the soul and a newer worry about germs."
+tags: ["the-body", "etiquette", "rituals", "history"]
 ---
 
 ## Observation

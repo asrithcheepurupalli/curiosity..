@@ -3,6 +3,7 @@ title: "Why Do You Feel a Phantom Buzz From a Phone That Isn't There?"
 date: "2027-03-27"
 readingTime: 2
 description: "A vibration travels up your leg, you reach for the phone, and find a pocket that has been empty the whole time."
+tags: ["technology", "perception", "psychology", "the-body"]
 ---
 
 ## Observation

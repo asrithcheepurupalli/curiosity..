@@ -3,6 +3,7 @@ title: "Why Is the Plural of Mouse Mice but the Computer One Is Mouses?"
 date: "2027-05-14"
 readingTime: 3
 description: "An office argument about two small devices on a desk reveals how English quietly decides which old rules a new word gets to inherit."
+tags: ["language", "etymology", "technology"]
 ---
 
 ## Observation

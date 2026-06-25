@@ -3,6 +3,7 @@ title: "Do Humans Need Towels After Showering?"
 date: "2024-04-12"
 readingTime: 5
 description: "An inquiry into the ritual of drying and whether it is necessity or habit."
+tags: ["rituals", "the-body", "everyday-objects", "perception"]
 ---
 
 ## Observation

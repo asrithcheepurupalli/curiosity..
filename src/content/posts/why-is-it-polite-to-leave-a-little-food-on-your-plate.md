@@ -3,6 +3,7 @@ title: "Why Is It Polite To Leave A Little Food On Your Plate?"
 date: "2026-12-26"
 readingTime: 2
 description: "A single forkful left behind can read as gratitude in one home and insult in the next, depending entirely on who taught you to eat."
+tags: ["etiquette", "food", "rituals"]
 ---
 
 ## Observation

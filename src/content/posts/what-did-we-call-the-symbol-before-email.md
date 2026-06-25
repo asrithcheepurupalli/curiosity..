@@ -3,6 +3,7 @@ title: "What Did We Call the '@' Symbol Before Email?"
 date: "2027-02-20"
 readingTime: 3
 description: "A small loop of a character sat quietly in ledgers and on keyboards for centuries, collecting names in a dozen languages, before email made it famous."
+tags: ["language", "etymology", "history", "technology"]
 ---
 
 ## Observation

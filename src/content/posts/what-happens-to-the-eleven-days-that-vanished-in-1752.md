@@ -3,6 +3,7 @@ title: "What Happens to the Eleven Days That Vanished in 1752?"
 date: "2026-12-14"
 readingTime: 3
 description: "When Britain skipped from September 2nd to September 14th, the missing days had to be quietly settled in birthdays, rents, and the ages people claimed to be."
+tags: ["time", "history", "measurement", "numbers"]
 ---
 
 ## Observation

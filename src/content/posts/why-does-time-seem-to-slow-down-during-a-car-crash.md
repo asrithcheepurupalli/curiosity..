@@ -3,6 +3,7 @@ title: "Why Does Time Seem To Slow Down During A Car Crash?"
 date: "2027-03-02"
 readingTime: 2
 description: "In the half-second before impact, a single moment stretches into something long and strange, and the reason has nothing to do with the speed of your thoughts."
+tags: ["psychology", "perception", "the-body", "time"]
 ---
 
 ## Observation

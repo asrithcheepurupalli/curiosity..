@@ -3,6 +3,7 @@ title: "Why Is the Inside of a Thermos a Mirror?"
 date: "2026-12-01"
 readingTime: 2
 description: "Unscrew the cap of a vacuum flask and you find a silvered wall staring back, a mirror doing the quietest work in the house."
+tags: ["everyday-objects", "science", "physics", "light"]
 ---
 
 ## Observation

@@ -3,6 +3,7 @@ title: "The Screen You Always Ignore: Requests in the Last 24 Hours"
 date: "2026-03-14"
 readingTime: 5
 description: "That dashboard graph you scroll past every day? It's actually telling you a story. Here's how to read it."
+tags: ["interfaces", "technology", "perception", "design"]
 ---
 
 ## Observation

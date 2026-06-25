@@ -3,6 +3,7 @@ title: "Why Can't Your Phone Hear Netflix?"
 date: "2026-06-25"
 readingTime: 7
 description: "A home-theatre idea ran straight into a wall that was built on purpose. The wall turned out to be more interesting than the idea."
+tags: ["technology", "sound", "science", "interfaces"]
 ---
 
 ## Observation

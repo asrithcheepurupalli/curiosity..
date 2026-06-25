@@ -3,6 +3,7 @@ title: "Why Do We Wave Goodbye Instead of Just Leaving?"
 date: "2027-05-27"
 readingTime: 2
 description: "A small hand lifted at a doorway turns out to be one of the oldest things a body can say without speaking."
+tags: ["rituals", "etiquette", "the-body", "psychology"]
 ---
 
 ## Observation

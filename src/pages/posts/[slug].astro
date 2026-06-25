@@ -141,6 +141,13 @@ const postJsonLd = {
             <span class="meta-dot" aria-hidden="true">·</span>
             <span class="label">{post.data.readingTime} min read</span>
           </div>
+          {post.data.tags && post.data.tags.length > 0 && (
+            <ul class="post-tags" aria-label="Tags">
+              {post.data.tags.map((t) => (
+                <li><a href={`/tags/${t}/`} class="post-tag">{t}</a></li>
+              ))}
+            </ul>
+          )}
         </header>
 
         <div class="post-content">
@@ -278,6 +285,34 @@ const postJsonLd = {
   .meta-dot {
     color: var(--text-muted);
     font-size: 0.65rem;
+  }
+
+  .post-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--spacing-unit));
+    padding: 0;
+    margin: calc(var(--spacing-unit) * 2.5) 0 0;
+  }
+
+  .post-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--divider);
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.25);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .post-tag:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-dim);
   }
 
   .post-content {

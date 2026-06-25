@@ -3,6 +3,7 @@ title: "Why Is the Bottom of a Wine Bottle Pushed Inward?"
 date: "2027-02-02"
 readingTime: 2
 description: "The dimple in the base of a wine bottle hides a tangle of half-true explanations stretching back to the first glassblowers."
+tags: ["everyday-objects", "history", "design"]
 ---
 
 ## Observation

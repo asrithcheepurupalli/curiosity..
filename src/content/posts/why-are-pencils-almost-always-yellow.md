@@ -3,6 +3,7 @@ title: "Why Are Pencils Almost Always Yellow?"
 date: "2027-04-17"
 readingTime: 2
 description: "A coat of yellow paint on a wooden pencil is a quiet inheritance from a 19th-century boast about where the graphite came from."
+tags: ["everyday-objects", "history", "design"]
 ---
 
 ## Observation

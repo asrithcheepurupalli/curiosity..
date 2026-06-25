@@ -3,6 +3,7 @@ title: "Where Did 'AM' And 'PM' Get Their Letters?"
 date: "2027-03-09"
 readingTime: 2
 description: "Two tiny abbreviations on every clock are fragments of a dead language, still doing their quiet work long after anyone stopped speaking it."
+tags: ["language", "etymology", "time", "measurement"]
 ---
 
 ## Observation

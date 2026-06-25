@@ -3,6 +3,7 @@ title: "Why Do Progress Bars Lie To You?"
 date: "2027-05-24"
 readingTime: 2
 description: "A download bar races to ninety percent, then crawls, and we wait inside a number that was never quite telling us the truth."
+tags: ["interfaces", "technology", "design", "psychology"]
 ---
 
 ## Observation

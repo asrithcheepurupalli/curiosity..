@@ -3,6 +3,7 @@ title: "Why Do We Count 'One, Two, Three' but Say 'First, Second, Third'?"
 date: "2027-05-16"
 readingTime: 2
 description: "The smallest ordinals refuse the tidy suffix every later number wears, and the reason is hidden in how often a word gets spoken."
+tags: ["language", "numbers", "etymology"]
 ---
 
 ## Observation

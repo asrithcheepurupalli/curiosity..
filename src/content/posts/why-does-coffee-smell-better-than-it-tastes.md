@@ -3,6 +3,7 @@ title: "Why Does Coffee Smell Better Than It Tastes?"
 date: "2026-11-10"
 readingTime: 2
 description: "The cup that promises so much in the steam and delivers something sharper and plainer on the tongue, and the gap between the two senses."
+tags: ["food", "perception", "science", "the-body"]
 ---
 
 ## Observation

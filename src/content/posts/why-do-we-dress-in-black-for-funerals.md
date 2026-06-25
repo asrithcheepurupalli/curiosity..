@@ -3,6 +3,7 @@ title: "Why Do We Dress In Black For Funerals?"
 date: "2026-12-10"
 readingTime: 2
 description: "The dark suit at the graveside feels like an ancient law of grief, but the color of mourning has changed continents and centuries the way fashion changes hemlines."
+tags: ["rituals", "history", "etiquette", "psychology"]
 ---
 
 ## Observation

@@ -3,6 +3,7 @@ title: "Why Does February Have 28 Days?"
 date: "2027-05-21"
 readingTime: 2
 description: "A short, lopsided month is the scar left where the Roman year once simply stopped counting."
+tags: ["time", "measurement", "history"]
 ---
 
 ## Observation

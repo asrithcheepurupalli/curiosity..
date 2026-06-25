@@ -3,6 +3,7 @@ title: "Why Do You Get Goosebumps From Music That Has Nothing to Do With Cold?"
 date: "2027-06-14"
 readingTime: 2
 description: "A leftover reflex for raising fur, built to make us look bigger against threats, gets quietly hijacked by a swelling chord and pours a wave of chills down warm skin."
+tags: ["the-body", "sound", "biology", "perception"]
 ---
 
 ## Observation

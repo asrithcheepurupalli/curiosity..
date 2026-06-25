@@ -3,6 +3,7 @@ title: "Why Does Looking at the Sun Make You Sneeze?"
 date: "2026-11-23"
 readingTime: 2
 description: "Some of us walk out of a dark room into noon light and sneeze, and the reason hides in a crossed wire we never chose."
+tags: ["the-body", "biology", "light", "perception"]
 ---
 
 ## Observation

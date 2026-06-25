@@ -3,6 +3,7 @@ title: "The Geometry of a Bento Box"
 date: "2023-02-15"
 readingTime: 6
 description: "How a compartmentalized lunch box became a philosophy of order, beauty, and restraint."
+tags: ["food", "design", "everyday-objects", "rituals"]
 ---
 
 ## Observation

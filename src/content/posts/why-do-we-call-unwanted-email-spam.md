@@ -3,6 +3,7 @@ title: "Why Do We Call Unwanted Email 'Spam'?"
 date: "2026-08-17"
 readingTime: 2
 description: "The word for junk in your inbox borrows its name from a canned meat and a comedy sketch where that meat simply will not stop being said."
+tags: ["language", "etymology", "technology", "food"]
 ---
 
 ## Observation

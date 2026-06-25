@@ -3,6 +3,7 @@ title: "Why Does a Day Have Exactly 24 Hours?"
 date: "2026-10-05"
 readingTime: 2
 description: "A number that feels like physics is actually an accident of Egyptian stargazing and the uneven math of counting daylight separately from dark."
+tags: ["time", "history", "measurement", "numbers"]
 ---
 
 ## Observation

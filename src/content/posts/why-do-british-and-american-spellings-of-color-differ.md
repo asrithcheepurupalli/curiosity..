@@ -3,6 +3,7 @@ title: "Why Do British And American Spellings Of 'Color' Differ?"
 date: "2026-09-07"
 readingTime: 2
 description: "A single missing letter in an everyday word turns out to be a small act of nation-building, planted there on purpose two centuries ago."
+tags: ["language", "history", "etymology"]
 ---
 
 ## Observation

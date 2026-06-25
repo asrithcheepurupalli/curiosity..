@@ -3,6 +3,7 @@ title: "Why Do Your Ears Pop in an Elevator or on a Plane?"
 date: "2026-07-09"
 readingTime: 3
 description: "A tiny tube behind the eardrum spends its life quietly balancing the air on both sides, and the pop is the sound of it catching up."
+tags: ["the-body", "sound", "biology", "perception"]
 ---
 
 ## Observation

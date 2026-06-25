@@ -3,6 +3,7 @@ title: "Why Does Your Voice Sound Wrong on a Recording?"
 date: "2026-12-07"
 readingTime: 2
 description: "The voice you have heard your whole life is a private acoustic illusion, built partly from the hum of your own bones."
+tags: ["the-body", "sound", "perception", "science"]
 ---
 
 ## Observation

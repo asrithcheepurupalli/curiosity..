@@ -3,6 +3,7 @@ title: "Why Do We Take Our Hats Off Indoors?"
 date: "2027-05-03"
 readingTime: 2
 description: "A vanishing courtesy that once meant a man was lowering his guard, in the oldest and most literal sense."
+tags: ["rituals", "etiquette", "history", "everyday-objects"]
 ---
 
 ## Observation

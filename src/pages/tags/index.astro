@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('posts')).filter(
+  p => !p.data.draft && new Date(p.data.date).getTime() <= Date.now()
+);
+
+const counts: Record<string, number> = {};
+for (const p of posts) for (const t of (p.data.tags ?? [])) counts[t] = (counts[t] ?? 0) + 1;
+const tags = Object.entries(counts).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+
+<Layout
+  title="Tags"
+  description="Browse every curiosity topic by tag. Small questions about everyday things, grouped by theme."
+>
+  <div class="tags-page">
+    <a href="/" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Archive
+    </a>
+
+    <header class="tags-header">
+      <p class="label">Index</p>
+      <h1 class="tags-title">Tags</h1>
+    </header>
+
+    <ul class="tag-cloud">
+      {tags.map(([tag, count]) => (
+        <li>
+          <a href={`/tags/${tag}/`} class="tag-chip">
+            <span class="tag-name">{tag}</span>
+            <span class="tag-num">{count}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .tags-page {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 10);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: calc(var(--spacing-unit));
+    font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+    margin-bottom: calc(var(--spacing-unit) * 6); transition: color 0.2s ease;
+  }
+  .back-link:hover { color: var(--text); }
+  .tags-header { margin-bottom: calc(var(--spacing-unit) * 6); }
+  .tags-title {
+    font-family: var(--font-body); font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300; color: var(--text); margin-top: calc(var(--spacing-unit));
+  }
+  .tag-cloud { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: calc(var(--spacing-unit) * 1.5); }
+  .tag-chip {
+    display: inline-flex; align-items: center; gap: calc(var(--spacing-unit) * 1.25);
+    font-family: var(--font-mono); font-size: 0.8rem; color: var(--text);
+    text-decoration: none; border: 1px solid var(--divider);
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .tag-chip:hover { border-color: var(--accent); background: var(--accent-dim); }
+  .tag-name { letter-spacing: 0.04em; }
+  .tag-num {
+    font-size: 0.65rem; color: var(--text-muted);
+    background: var(--divider); padding: 1px 7px; border-radius: 999px;
+  }
+</style>

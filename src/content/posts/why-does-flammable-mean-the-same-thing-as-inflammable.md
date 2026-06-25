@@ -3,6 +3,7 @@ title: "Why Does 'Flammable' Mean The Same Thing As 'Inflammable'?"
 date: "2027-05-01"
 readingTime: 2
 description: "A confusing prefix on the side of a fuel truck quietly rewrote itself once people read it as a promise that nothing inside would ever burn."
+tags: ["language", "etymology", "science"]
 ---
 
 ## Observation

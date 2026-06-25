@@ -3,6 +3,7 @@ title: "Why Does Fog Sit In Valleys At Dawn And Vanish By Noon?"
 date: "2027-01-03"
 readingTime: 2
 description: "A low ribbon of mist that fills the hollows at first light, then quietly thins into nothing as the sun climbs."
+tags: ["weather", "nature", "science", "physics"]
 ---
 
 ## Observation

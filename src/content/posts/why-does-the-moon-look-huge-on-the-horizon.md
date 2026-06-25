@@ -3,6 +3,7 @@ title: "Why Does The Moon Look Huge On The Horizon?"
 date: "2027-01-28"
 readingTime: 2
 description: "A full moon that swells over the rooftops and shrinks once it climbs, while never changing size at all."
+tags: ["perception", "nature", "light", "psychology"]
 ---
 
 ## Observation

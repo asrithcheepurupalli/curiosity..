@@ -3,6 +3,7 @@ title: "Where Did the Holes in a Colander Come From?"
 date: "2027-01-07"
 readingTime: 2
 description: "The little pattern of holes draining your pasta is a quiet compromise between letting water rush out fast and keeping every noodle from slipping through."
+tags: ["kitchen", "everyday-objects", "design", "history"]
 ---
 
 ## Observation

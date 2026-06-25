@@ -3,6 +3,7 @@ title: "Where Did the Word 'Deadline' Come From?"
 date: "2026-07-02"
 readingTime: 2
 description: "A word we now use for due dates and projects began as a real line in the dirt that meant the difference between living and being shot."
+tags: ["language", "etymology", "history", "time"]
 ---
 
 ## Observation

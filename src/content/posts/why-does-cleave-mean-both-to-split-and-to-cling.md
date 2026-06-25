@@ -3,6 +3,7 @@ title: "Why Does 'Cleave' Mean Both To Split And To Cling?"
 date: "2026-07-24"
 readingTime: 2
 description: "A single English word carries two opposite lives, one for the axe and one for the embrace, and the seam between them runs back through a thousand years."
+tags: ["language", "etymology", "history"]
 ---
 
 ## Observation

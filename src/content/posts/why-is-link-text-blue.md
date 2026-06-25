@@ -3,6 +3,7 @@ title: "Why Is Link Text Blue?"
 date: "2027-06-04"
 readingTime: 2
 description: "A color nobody chose on purpose became the quiet, universal signal for 'you can go somewhere from here.'"
+tags: ["interfaces", "design", "technology", "history"]
 ---
 
 ## Observation

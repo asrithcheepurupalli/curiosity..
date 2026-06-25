@@ -3,6 +3,7 @@ title: "Why Does a Rubber Band Get Warm When You Stretch It?"
 date: "2026-07-16"
 readingTime: 2
 description: "A stretched rubber band warms your lip and a relaxed one cools it, a small reversal that turns one ordinary material into a quiet exception to almost everything else."
+tags: ["physics", "everyday-objects", "science"]
 ---
 
 ## Observation

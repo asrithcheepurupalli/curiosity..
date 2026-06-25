@@ -3,6 +3,7 @@ title: "Why Do Keys Have All Those Random Notches?"
 date: "2026-07-27"
 readingTime: 2
 description: "The jagged edge of an ordinary key is not random at all: it is a number written in metal, waiting to be read by a row of tiny pins in the dark."
+tags: ["everyday-objects", "design", "numbers", "history"]
 ---
 
 ## Observation

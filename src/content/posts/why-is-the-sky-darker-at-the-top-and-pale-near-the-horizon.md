@@ -3,6 +3,7 @@ title: "Why Is The Sky Darker At The Top And Pale Near The Horizon?"
 date: "2027-02-14"
 readingTime: 2
 description: "On a clear afternoon the blue overhead is deep and rich, yet it fades to a milky white where the land meets the air."
+tags: ["nature", "light", "perception", "science"]
 ---
 
 ## Observation

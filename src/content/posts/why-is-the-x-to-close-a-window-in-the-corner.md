@@ -3,6 +3,7 @@ title: "Why Is the X to Close a Window in the Corner?"
 date: "2027-05-09"
 readingTime: 2
 description: "A small square sits at the far edge of the screen, and the mouse finds it almost without looking, because the corner is the easiest place a pointer can ever go."
+tags: ["interfaces", "design", "technology", "history"]
 ---
 
 ## Observation

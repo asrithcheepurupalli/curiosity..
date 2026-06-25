@@ -3,6 +3,7 @@ title: "Why Do Touchscreens Ignore Cold or Wet Fingers?"
 date: "2026-07-07"
 readingTime: 3
 description: "A glass surface that answers to your touch suddenly falls silent when your skin goes dry or the rain gets between you and the screen."
+tags: ["technology", "interfaces", "the-body", "science"]
 ---
 
 ## Observation

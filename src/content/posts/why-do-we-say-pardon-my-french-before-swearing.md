@@ -3,6 +3,7 @@ title: "Why Do We Say 'Pardon My French' Before Swearing?"
 date: "2027-04-13"
 readingTime: 2
 description: "A small verbal flinch we perform before a curse word turns out to be a polite apology borrowed, quite literally, from another language."
+tags: ["language", "etiquette", "etymology", "history"]
 ---
 
 ## Observation

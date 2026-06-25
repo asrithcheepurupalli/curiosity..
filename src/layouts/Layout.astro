@@ -44,6 +44,8 @@ const pageTitle = title.includes('Curiosity Log') ? title : `${title} — Curios
     <meta name="theme-color" content="#0F0F10" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="alternate" type="application/rss+xml" title="Curiosity Log" href="/rss.xml" />
@@ -117,6 +119,7 @@ const pageTitle = title.includes('Curiosity Log') ? title : `${title} — Curios
 
     <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <a href="/" class="mobile-nav-link">Archive</a>
+      <a href="/tags" class="mobile-nav-link">Tags</a>
       <a href="/about" class="mobile-nav-link">About</a>
       <a href="/rss.xml" class="mobile-nav-link">RSS</a>
       <button class="surprise-btn-mobile" id="surpriseBtnMobile">Surprise Me →</button>
@@ -137,6 +140,7 @@ const pageTitle = title.includes('Curiosity Log') ? title : `${title} — Curios
             <p class="label">Explore</p>
             <nav class="footer-nav">
               <a href="/about">About the Log</a>
+              <a href="/tags">Tags</a>
               <a href="/rss.xml">RSS Feed</a>
             </nav>
           </div>
@@ -145,6 +149,7 @@ const pageTitle = title.includes('Curiosity Log') ? title : `${title} — Curios
           <span class="label">&copy; {new Date().getFullYear()} Curiosity Log</span>
           <nav class="footer-bottom-nav">
             <a href="/" class="label">Archive</a>
+            <a href="/tags" class="label">Tags</a>
             <a href="/rss.xml" class="label">RSS</a>
             <a href="/about" class="label">About</a>
           </nav>

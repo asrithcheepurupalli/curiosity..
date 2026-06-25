@@ -3,6 +3,7 @@ title: "Why Does a Stainless Steel Bar Get the Garlic Smell Off Your Hands?"
 date: "2026-09-27"
 readingTime: 2
 description: "A bar of steel shaped like soap, holding no soap at all, quietly trading places with the garlic on your skin."
+tags: ["kitchen", "science", "everyday-objects", "the-body"]
 ---
 
 ## Observation

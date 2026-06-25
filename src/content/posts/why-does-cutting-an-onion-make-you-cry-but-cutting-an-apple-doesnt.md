@@ -3,6 +3,7 @@ title: "Why Does Cutting an Onion Make You Cry but Cutting an Apple Doesn't?"
 date: "2026-07-19"
 readingTime: 2
 description: "An onion answers the knife with a quiet chemistry that turns the air itself faintly sour against your open eyes."
+tags: ["food", "kitchen", "science", "the-body"]
 ---
 
 ## Observation

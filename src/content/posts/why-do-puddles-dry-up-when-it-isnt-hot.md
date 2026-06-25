@@ -3,6 +3,7 @@ title: "Why Do Puddles Dry Up When It Isn't Hot?"
 date: "2027-04-20"
 readingTime: 2
 description: "A shallow puddle vanishes overnight on a cool, grey day, and the explanation lives in the restless arithmetic of molecules that never agree on a single speed."
+tags: ["weather", "science", "physics", "nature"]
 ---
 
 ## Observation

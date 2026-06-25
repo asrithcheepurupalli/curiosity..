@@ -3,6 +3,7 @@ title: "Why Do We Say 'O'Clock'?"
 date: "2026-10-22"
 readingTime: 2
 description: "A small grammatical fossil hides inside an ordinary phrase, marking the moment machines began to keep time better than the sky did."
+tags: ["language", "time", "etymology", "measurement"]
 ---
 
 ## Observation

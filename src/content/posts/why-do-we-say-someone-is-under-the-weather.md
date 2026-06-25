@@ -3,6 +3,7 @@ title: "Why Do We Say Someone Is 'Under the Weather'?"
 date: "2027-04-26"
 readingTime: 2
 description: "A queasy phrase that traces back to seasick sailors sent down into the hull, below the line where the storm lived."
+tags: ["language", "etymology", "weather", "history"]
 ---
 
 ## Observation

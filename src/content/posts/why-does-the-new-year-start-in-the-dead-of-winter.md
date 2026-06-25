@@ -3,6 +3,7 @@ title: "Why Does the New Year Start in the Dead of Winter?"
 date: "2027-02-05"
 readingTime: 2
 description: "A look at why the calendar resets on a cold, dark night that no star or season actually marks."
+tags: ["time", "history", "rituals", "measurement"]
 ---
 
 ## Observation

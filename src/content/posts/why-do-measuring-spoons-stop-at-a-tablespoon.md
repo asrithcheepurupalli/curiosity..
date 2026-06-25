@@ -3,6 +3,7 @@ title: "Why Do Measuring Spoons Stop at a Tablespoon?"
 date: "2026-12-28"
 readingTime: 2
 description: "The little ladder of teaspoons climbing to a single tablespoon is the last visible rung of a measuring system that once dosed medicine, not soup."
+tags: ["kitchen", "measurement", "everyday-objects", "history"]
 ---
 
 ## Observation

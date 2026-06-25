@@ -3,6 +3,7 @@ title: "Why Do Humans Shake Hands?"
 date: "2024-03-28"
 readingTime: 4
 description: "The handshake as ancient gesture, social technology, and subtle communication system."
+tags: ["rituals", "etiquette", "the-body", "history"]
 ---
 
 ## Observation

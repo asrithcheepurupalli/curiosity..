@@ -3,6 +3,7 @@ title: "Why Do Coat Hangers All Have That Same Triangle Shape?"
 date: "2027-03-20"
 readingTime: 2
 description: "A closet full of identical wire triangles, each one quietly solving a problem of weight nobody asked it to."
+tags: ["everyday-objects", "design", "history"]
 ---
 
 ## Observation

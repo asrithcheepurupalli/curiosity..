@@ -3,6 +3,7 @@ title: "Why Do Clocks Go Clockwise?"
 date: "2023-10-05"
 readingTime: 4
 description: "The direction time moves on a clock face is an accident of geography and shadow."
+tags: ["time", "history", "light", "measurement"]
 ---
 
 ## Observation

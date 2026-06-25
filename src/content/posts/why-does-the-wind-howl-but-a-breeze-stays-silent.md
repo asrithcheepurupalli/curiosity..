@@ -3,6 +3,7 @@ title: "Why Does the Wind Howl But a Breeze Stays Silent?"
 date: "2026-12-16"
 readingTime: 2
 description: "Standing in an open field, the moving air makes no sound at all, until it finds a fence, a wire, a gap beneath a door."
+tags: ["weather", "sound", "physics", "science"]
 ---
 
 ## Observation

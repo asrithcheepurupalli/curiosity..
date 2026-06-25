@@ -3,6 +3,7 @@ title: "Why Do We Whisper in Libraries but Not at Parties?"
 date: "2026-09-18"
 readingTime: 2
 description: "A quiet look at how a room agrees, without a word, on exactly how loud anyone is allowed to be."
+tags: ["rituals", "etiquette", "sound", "psychology"]
 ---
 
 ## Observation

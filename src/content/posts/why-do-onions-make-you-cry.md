@@ -3,6 +3,7 @@ title: "Why Do Onions Make You Cry?"
 date: "2027-02-23"
 readingTime: 2
 description: "A vegetable with no nervous system, no intent, and no quarrel with you reaches across the cutting board and makes your eyes water."
+tags: ["food", "kitchen", "science", "the-body"]
 ---
 
 ## Observation

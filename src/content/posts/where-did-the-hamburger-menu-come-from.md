@@ -3,6 +3,7 @@ title: "Where Did the Hamburger Menu Come From?"
 date: "2026-09-21"
 readingTime: 2
 description: "Three stacked lines wait quietly in the corner of nearly every screen, a button so familiar that almost no one remembers it was drawn before the people tapping it were born."
+tags: ["interfaces", "design", "technology", "history"]
 ---
 
 ## Observation

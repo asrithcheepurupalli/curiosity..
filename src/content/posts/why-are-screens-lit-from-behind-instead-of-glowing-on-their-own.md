@@ -3,6 +3,7 @@ title: "Why Are Screens Lit From Behind Instead Of Glowing On Their Own?"
 date: "2026-10-30"
 readingTime: 2
 description: "A look at why most screens hid a constant lamp behind their pixels, and what changed when pixels learned to make their own light and go fully dark."
+tags: ["technology", "light", "interfaces", "physics"]
 ---
 
 ## Observation

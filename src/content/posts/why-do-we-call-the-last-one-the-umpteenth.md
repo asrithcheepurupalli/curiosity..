@@ -3,6 +3,7 @@ title: "Why Do We Call The Last One The Umpteenth?"
 date: "2027-06-25"
 readingTime: 2
 description: "A vague little number that means a large amount of something, traced back to the dots and dashes of a wartime telegraph key."
+tags: ["language", "numbers", "etymology", "history"]
 ---
 
 ## Observation

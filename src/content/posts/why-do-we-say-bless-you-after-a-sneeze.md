@@ -3,6 +3,7 @@ title: "Why Do We Say 'Bless You' After a Sneeze?"
 date: "2026-10-09"
 readingTime: 2
 description: "A two-word reflex we offer to strangers, carried forward by everyone who has forgotten why they ever feared a sneeze."
+tags: ["language", "rituals", "etiquette", "history"]
 ---
 
 ## Observation

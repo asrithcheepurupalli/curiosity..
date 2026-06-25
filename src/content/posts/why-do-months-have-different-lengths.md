@@ -3,6 +3,7 @@ title: "Why Do Months Have Different Lengths?"
 date: "2026-08-25"
 readingTime: 2
 description: "The lopsided 30 and 31 day pattern is not written in the sky; it is the leftover bookkeeping of Roman politics and a moon dragged into step with the sun."
+tags: ["time", "history", "measurement", "numbers"]
 ---
 
 ## Observation
