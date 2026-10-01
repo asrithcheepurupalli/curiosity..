@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Movie Night Pass</title>
+<meta name="description" content="A clickable prototype: pay 19 rupees once and watch tonight's movie without ads. A curiosity concept.">
+<meta property="og:title" content="Movie Night Pass, a prototype">
+<meta property="og:description" content="Pay 19 rupees once and watch tonight's movie without ads.">
+<meta property="og:image" content="https://curiosity.asrithcheepurupalli.tech/og/why-cant-i-pay-19-rupees-to-skip-the-ads-in-one-movie.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAFAF7; --text: #111; --muted: #666; --divider: #E5E5E5;
+  --accent: #2ECC71; --accent-ink: #0B3D20;
+  --mono: 'Space Mono', monospace; --body: 'Inter', system-ui, sans-serif;
+  --spring: cubic-bezier(.32,.72,0,1);
+  --sheet: #17171A; --sheet-2: #222226; --sheet-text: #F4F4F2; --sheet-muted: #9A9AA0;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0F0F10; --text: #E5E5E5; --muted: #888; --divider: #2A2A2A; }
+}
+:root[data-theme="dark"] { --bg: #0F0F10; --text: #E5E5E5; --muted: #888; --divider: #2A2A2A; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--text); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; padding: 32px 16px 48px; }
+body.embed { padding: 0; min-height: 0; background: transparent; }
+button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.wrap { max-width: 880px; margin: 0 auto; }
+.head { margin-bottom: 24px; }
+.head a { font-family: var(--mono); font-weight: 700; color: var(--text); text-decoration: none; font-size: 15px; }
+.head a span { color: var(--accent); }
+.head h1 { font-family: var(--mono); font-size: clamp(22px, 4vw, 30px); line-height: 1.2; margin: 20px 0 8px; letter-spacing: -0.01em; }
+.head p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 620px; }
+body.embed .head, body.embed .foot, body.embed .ledger { display: none; }
+
+/* Player */
+.player {
+  position: relative; aspect-ratio: 16 / 9; width: 100%;
+  background: #000; border-radius: 14px; overflow: hidden; color: #fff;
+  box-shadow: 0 24px 60px -24px rgba(0,0,0,.45);
+  container-type: inline-size; user-select: none;
+}
+body.embed .player { border-radius: 10px; box-shadow: none; }
+.layer { position: absolute; inset: 0; transition: opacity .5s ease; }
+.hidden { opacity: 0; pointer-events: none; }
+
+/* The film: a rainy evening sea, all CSS */
+.film { background: linear-gradient(180deg, #1B2A4A 0%, #3B4A72 38%, #C9866B 64%, #2A2F3F 66%, #121722 100%); overflow: hidden; }
+.film .sun { position: absolute; left: 50%; top: 52%; width: 22cqw; height: 22cqw; border-radius: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #FFD9A8 0%, #F2A27A 45%, rgba(242,162,122,0) 70%); filter: blur(1px); }
+.film .sea { position: absolute; left: 0; right: 0; top: 66%; bottom: 0;
+  background: repeating-linear-gradient(180deg, rgba(255,210,170,.10) 0 2px, transparent 2px 9px); animation: swell 6s ease-in-out infinite alternate; }
+.film .rain { position: absolute; inset: -20% 0 0 0;
+  background-image: repeating-linear-gradient(100deg, rgba(255,255,255,.16) 0 1px, transparent 1px 14px);
+  animation: rain .5s linear infinite; opacity: .55; }
+.film .figure { position: absolute; left: 30%; bottom: 28%; width: 3.2cqw; height: 11cqw; background: #0B0E16; border-radius: 40% 40% 10% 10%; }
+.film .figure::before { content: ""; position: absolute; left: 50%; top: -3cqw; width: 2.6cqw; height: 2.6cqw; transform: translateX(-50%); border-radius: 50%; background: #0B0E16; }
+.film .letter { position: absolute; left: calc(30% + 2.6cqw); bottom: calc(28% + 6cqw); width: 2.4cqw; height: 1.7cqw; background: #F6EEDC; border-radius: 2px; transform: rotate(-8deg); opacity: 0; transition: opacity .8s; }
+.film.letter-on .letter { opacity: 1; }
+.film.paused .rain, .film.paused .sea { animation-play-state: paused; }
+@keyframes rain { to { background-position: 0 28px; } }
+@keyframes swell { to { transform: translateY(4px); } }
+.sub { position: absolute; left: 0; right: 0; bottom: 9%; text-align: center; font-size: clamp(11px, 2.4cqw, 20px); text-shadow: 0 1px 4px rgba(0,0,0,.9); padding: 0 8%; transition: opacity .4s; }
+
+/* Poster */
+.poster { display: grid; place-items: center; text-align: center; background: radial-gradient(ellipse at 50% 120%, rgba(201,134,107,.55), transparent 60%), linear-gradient(180deg, #0D1220, #1B2A4A); }
+.poster .kicker { font-family: var(--mono); font-size: clamp(10px, 1.8cqw, 13px); letter-spacing: .14em; text-transform: uppercase; color: #C9B7A6; }
+.poster h2 { font-family: var(--mono); font-size: clamp(22px, 6.2cqw, 54px); letter-spacing: -.02em; margin: .25em 0 .2em; }
+.poster .meta { font-size: clamp(11px, 2cqw, 14px); color: #AEB3C2; }
+.play { margin-top: clamp(12px, 3.4cqw, 28px); display: inline-flex; align-items: center; gap: 10px; background: #fff; color: #000; font-weight: 600;
+  font-size: clamp(13px, 2.2cqw, 16px); padding: .8em 1.5em; border-radius: 999px; transition: transform .25s var(--spring); }
+.play:active { transform: scale(.96); }
+.play svg { width: 1em; height: 1em; }
+
+/* The ad: a fictional detergent */
+.ad { background: #FFD43B; color: #1C1C1C; display: grid; place-items: center; text-align: center; overflow: hidden; }
+.ad .brand { font-family: var(--body); font-weight: 800; font-size: clamp(30px, 11cqw, 96px); letter-spacing: -.04em; animation: bounce .9s var(--spring) infinite alternate; }
+.ad .line { font-weight: 600; font-size: clamp(12px, 2.6cqw, 22px); margin-top: .3em; }
+.ad .bubble { position: absolute; border-radius: 50%; border: 3px solid rgba(255,255,255,.75); animation: rise 3.4s linear infinite; }
+.ad.v2 { background: #FF5C5C; color: #fff; }
+.ad.v3 { background: #5CC8FF; color: #08202E; }
+@keyframes bounce { from { transform: scale(1) rotate(-2deg); } to { transform: scale(1.06) rotate(2deg); } }
+@keyframes rise { from { transform: translateY(40cqw); } to { transform: translateY(-20cqw); } }
+.ad-badge { position: absolute; left: 3cqw; bottom: 4cqw; display: flex; align-items: center; gap: 8px; font-size: clamp(10px, 1.8cqw, 13px); font-weight: 600; }
+.ad-badge b { background: #FFD43B; color: #000; padding: 2px 6px; border-radius: 4px; font-size: .9em; box-shadow: 0 0 0 1px rgba(0,0,0,.25); }
+.ad-badge span { background: rgba(0,0,0,.55); color: #fff; padding: 3px 8px; border-radius: 999px; }
+
+/* Progress bar */
+.bar { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.18); }
+.bar i { display: block; height: 100%; width: 0; background: #fff; transition: width .25s linear; }
+.bar .tick { position: absolute; top: -1px; width: 4px; height: 6px; background: #FFD43B; border-radius: 1px; }
+
+/* The pass chip, the whole idea */
+.chip { position: absolute; right: 3cqw; bottom: 4cqw; display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(15,15,16,.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.16); color: #fff; padding: .7em 1.05em; border-radius: 999px;
+  font-size: clamp(11px, 2cqw, 15px); font-weight: 600; transform: translateY(160%); opacity: 0;
+  transition: transform .6s var(--spring), opacity .4s, background .2s; }
+.chip.in { transform: none; opacity: 1; }
+.chip:hover { background: rgba(30,30,32,.92); }
+.chip:active { transform: scale(.96); }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(46,204,113,.25); }
+.chip .price { font-family: var(--mono); color: var(--accent); }
+
+.status { position: absolute; right: 3cqw; top: 3.4cqw; display: inline-flex; align-items: center; gap: 7px; font-size: clamp(10px, 1.7cqw, 13px); font-weight: 600;
+  background: rgba(46,204,113,.16); color: #CFF5DE; border: 1px solid rgba(46,204,113,.45); padding: .45em .85em; border-radius: 999px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transform: translateY(-8px); transition: opacity .4s, transform .6s var(--spring); }
+.status.in { opacity: 1; transform: none; }
+.status .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+/* Sheet */
+.scrim { position: absolute; inset: 0; background: rgba(0,0,0,.55); opacity: 0; pointer-events: none; transition: opacity .35s; }
+.scrim.on { opacity: 1; pointer-events: auto; }
+.sheet { position: absolute; left: 50%; bottom: 0; width: min(440px, 92%); background: var(--sheet); color: var(--sheet-text);
+  border-radius: 18px 18px 0 0; padding: clamp(14px, 3.4cqw, 26px) clamp(16px, 3.6cqw, 28px) clamp(14px, 3cqw, 24px);
+  transform: translate(-50%, 105%); transition: transform .55s var(--spring); max-height: 96%; overflow: auto;
+  box-shadow: 0 -12px 40px rgba(0,0,0,.4); }
+.sheet.on { transform: translate(-50%, 0); }
+.sheet .grab { width: 36px; height: 4px; border-radius: 4px; background: #3A3A40; margin: 0 auto clamp(8px, 2cqw, 16px); }
+.sheet h3 { font-size: clamp(17px, 3.4cqw, 24px); letter-spacing: -.02em; line-height: 1.2; }
+.sheet p { color: var(--sheet-muted); font-size: clamp(12px, 2cqw, 14px); line-height: 1.5; margin-top: 6px; }
+.offer { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--sheet-2); border-radius: 12px; padding: clamp(10px, 2.2cqw, 14px) clamp(12px, 2.4cqw, 16px); margin: clamp(10px, 2.4cqw, 16px) 0; }
+.offer .t { font-weight: 600; font-size: clamp(13px, 2.2cqw, 15px); }
+.offer .s { color: var(--sheet-muted); font-size: clamp(11px, 1.8cqw, 13px); margin-top: 2px; }
+.offer .p { font-family: var(--mono); font-weight: 700; font-size: clamp(18px, 3.6cqw, 26px); color: var(--accent); white-space: nowrap; }
+.offer .p s { color: var(--sheet-muted); font-size: .55em; font-weight: 400; margin-right: 6px; }
+.cta { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: var(--accent-ink);
+  font-weight: 700; font-size: clamp(14px, 2.4cqw, 16px); padding: .9em 1em; border-radius: 12px; transition: transform .25s var(--spring), filter .2s; }
+.cta:hover { filter: brightness(1.05); }
+.cta:active { transform: scale(.97); }
+.ghost { width: 100%; padding: .8em 1em; margin-top: 6px; color: var(--sheet-muted); font-size: clamp(12px, 2.1cqw, 14px); font-weight: 500; border-radius: 12px; }
+.ghost:hover { color: var(--sheet-text); }
+.fine { text-align: center; color: #6E6E75; font-size: clamp(10px, 1.6cqw, 12px); margin-top: 4px; }
+.upi { font-family: var(--mono); font-size: .8em; background: rgba(0,0,0,.12); padding: 2px 6px; border-radius: 4px; }
+
+.state { text-align: center; padding: clamp(6px, 2cqw, 14px) 0 clamp(4px, 1.4cqw, 10px); }
+.spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #333; border-top-color: var(--accent); margin: 4px auto 12px; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.check { width: 46px; height: 46px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; margin: 2px auto 12px; transform: scale(.4); opacity: 0; transition: transform .5s var(--spring), opacity .3s; }
+.check.on { transform: none; opacity: 1; }
+.check svg { width: 24px; height: 24px; }
+.math { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; font-size: clamp(12px, 2cqw, 14px); margin: clamp(10px, 2.4cqw, 16px) 0; background: var(--sheet-2); border-radius: 12px; padding: 12px 14px; }
+.math span:nth-child(even) { font-family: var(--mono); text-align: right; }
+.math .total { border-top: 1px solid #333; padding-top: 6px; margin-top: 2px; font-weight: 700; }
+.math .total + .total { color: var(--accent); }
+
+/* Demo panel under the player */
+.panel { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.panel button { font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--divider); color: var(--text); transition: transform .25s var(--spring), border-color .2s; }
+.panel button:hover { border-color: var(--accent); }
+.panel button:active { transform: scale(.96); }
+.panel button[aria-pressed="true"] { border-color: var(--accent); background: rgba(46,204,113,.12); }
+.panel .log { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-left: auto; }
+
+.ledger { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.ledger div { border: 1px solid var(--divider); border-radius: 12px; padding: 14px 16px; }
+.ledger b { display: block; font-family: var(--mono); font-size: 22px; margin-top: 4px; }
+.ledger small { color: var(--muted); font-size: 12px; line-height: 1.4; display: block; }
+.ledger .good b { color: var(--accent); }
+.foot { margin-top: 28px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+.foot a { color: var(--text); }
+
+/* Small players: the sheet leaves the frame and becomes a real bottom sheet */
+body.compact .scrim { position: fixed; z-index: 20; }
+body.compact .sheet { position: fixed; z-index: 21; width: 100%; max-width: 480px; max-height: 88vh; padding: 16px 20px calc(20px + env(safe-area-inset-bottom)); }
+
+@media (max-width: 600px) {
+  .ledger { grid-template-columns: 1fr; }
+  .panel .log { margin-left: 0; width: 100%; }
+  .chip .long { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <a href="/">curiosity<span>.</span></a>
+    <h1>Movie Night Pass</h1>
+    <p>A clickable prototype for <a href="/posts/why-cant-i-pay-19-rupees-to-skip-the-ads-in-one-movie/" style="color:inherit">this post</a>. Press play, wait for the ad, then tap the green chip. Pay 19 rupees once and tonight's movie plays without ads.</p>
+  </header>
+
+  <div class="player" id="player" aria-label="Prototype video player">
+    <div class="layer film" id="film">
+      <div class="sun"></div><div class="sea"></div><div class="rain"></div>
+      <div class="figure"></div><div class="letter"></div>
+      <div class="sub" id="sub"></div>
+    </div>
+
+    <div class="layer ad hidden" id="ad">
+      <div>
+        <div class="brand" id="adBrand">WASHO</div>
+        <div class="line" id="adLine">Whiter than your weekend plans.</div>
+      </div>
+    </div>
+
+    <div class="layer poster" id="poster">
+      <div>
+        <div class="kicker">Tonight's movie</div>
+        <h2>Monsoon Letters</h2>
+        <div class="meta">2h 08m · Drama · A fictional film</div>
+        <button class="play" id="playBtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Play</button>
+      </div>
+    </div>
+
+    <div class="ad-badge hidden" id="adBadge"><b>Ad</b><span id="adCount">1 of 3 · 0:10</span></div>
+    <div class="status" id="status"><span class="dot"></span><span id="statusText">No ads · 23h 59m left</span></div>
+    <button class="chip" id="chip" aria-label="No ads tonight for 19 rupees"><span class="dot"></span><span><span class="long">No ads tonight · </span><span class="price">₹19</span></span></button>
+    <div class="bar" id="barWrap"><i id="bar"></i></div>
+
+    <div class="scrim" id="scrim"></div>
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle"></div>
+  </div>
+
+  <div class="panel">
+    <button id="restart">Restart</button>
+    <button id="heavy" aria-pressed="false">Pretend this is my 3rd pass this month</button>
+    <span class="log" id="log">Ads seen: 0 · Passes bought: 0</span>
+  </div>
+
+  <section class="ledger" aria-label="What each choice is worth">
+    <div><small>Ads in one movie earn the platform about</small><b>₹8</b><small>20 or so slots, Indian connected TV ad rates, not every slot sold</small></div>
+    <div class="good"><small>A ₹19 pass keeps, after 18% GST</small><b>₹16</b><small>Roughly twice what the ads were worth</small></div>
+    <div><small>Seven passes cost about the same as a month</small><b>₹133 vs ₹129</b><small>So heavy watchers get pushed toward the yearly plan, not away from it</small></div>
+  </section>
+
+  <p class="foot">A concept prototype. The film, the ads and the brands in it are made up, and it is not affiliated with any streaming service. Read the reasoning in <a href="/posts/why-cant-i-pay-19-rupees-to-skip-the-ads-in-one-movie/">Why Can't I Pay 19 Rupees to Skip the Ads in One Movie?</a></p>
+</div>
+
+<script>
+(() => {
+  if (new URLSearchParams(location.search).has('embed')) document.body.classList.add('embed');
+  const $ = (id) => document.getElementById(id);
+  const film = $('film'), ad = $('ad'), poster = $('poster'), sub = $('sub');
+  const chip = $('chip'), statusEl = $('status'), statusText = $('statusText');
+  const adBadge = $('adBadge'), adCount = $('adCount'), bar = $('bar'), barWrap = $('barWrap');
+  const sheet = $('sheet'), scrim = $('scrim'), log = $('log'), heavyBtn = $('heavy');
+
+  const ADS = [
+    { brand: 'WASHO', line: 'Whiter than your weekend plans.', cls: '' },
+    { brand: 'crunchos', line: 'Now 12% more crunch. Probably.', cls: 'v2' },
+    { brand: 'Zipp Bank', line: 'Loans in 4 minutes. Regret in 5.', cls: 'v3' },
+  ];
+  const AD_LEN = 6;          // seconds per ad (real ads are 20 to 30)
+  const MOVIE_LEN = 40;      // compressed movie, in seconds
+  const MIDROLL_AT = 14;     // the ad lands right as she opens the letter
+  const LINES = [
+    [1, 'Rain again. Third day in a row.'],
+    [5, 'He said he would write. He never wrote.'],
+    [9, 'Wait. There is something under the door.'],
+    [12, 'It is his handwriting.'],
+    [MIDROLL_AT + 1, '"Meera, I should have said this at the station..."'],
+    [21, '"...I was never leaving you. I was leaving the city."'],
+    [27, 'She reads it twice. Then a third time.'],
+    [33, 'The rain stops.'],
+  ];
+
+  let s; // all state lives here
+  const fresh = (passes = 0) => ({
+    mode: 'poster', t: 0, adIdx: 0, adLeft: AD_LEN, adsInBreak: 2, breakCount: 0, break: null,
+    midrollDone: false, adFree: false, paused: false, adsSeen: 0, passes, timer: null,
+  });
+
+  function render() {
+    poster.classList.toggle('hidden', s.mode !== 'poster');
+    ad.classList.toggle('hidden', s.mode !== 'ad');
+    adBadge.classList.toggle('hidden', s.mode !== 'ad');
+    film.classList.toggle('paused', s.paused || s.mode !== 'movie');
+    film.classList.toggle('letter-on', s.t >= 12);
+    barWrap.style.opacity = s.mode === 'poster' ? 0 : 1;
+    chip.classList.toggle('in', s.mode === 'ad' && !s.adFree && !s.paused);
+    statusEl.classList.toggle('in', s.adFree && s.mode === 'movie');
+    bar.style.width = (s.t / MOVIE_LEN * 100) + '%';
+    if (s.mode === 'ad') {
+      const a = ADS[s.adIdx % ADS.length];
+      $('adBrand').textContent = a.brand; $('adLine').textContent = a.line;
+      ad.className = 'layer ad ' + a.cls;
+      const shown = s.breakCount + 1;
+      adCount.textContent = `${shown} of ${s.adsInBreak} · 0:${String(s.adLeft).padStart(2, '0')}`;
+    }
+    let line = '';
+    for (const [at, l] of LINES) if (s.t >= at) line = l;
+    sub.textContent = s.mode === 'movie' || s.paused ? line : '';
+    if (s.mode === 'movie' && s.t >= MOVIE_LEN) sub.textContent = 'The end.';
+    log.textContent = `Ads seen: ${s.adsSeen} · Passes bought: ${s.passes}`;
+  }
+
+  function startBreak(kind) {
+    s.mode = 'ad'; s.break = kind; s.adIdx = kind === 'pre' ? 0 : 1; s.adLeft = AD_LEN; s.adsInBreak = 2; s.breakCount = 0;
+    s.adsSeen++;
+  }
+
+  function tick() {
+    if (s.paused) return;
+    if (s.mode === 'ad') {
+      s.adLeft--;
+      if (s.adLeft <= 0) {
+        s.breakCount++;
+        if (s.breakCount >= s.adsInBreak) { s.mode = 'movie'; if (s.break === 'mid') s.midrollDone = true; }
+        else { s.adIdx++; s.adLeft = AD_LEN; s.adsSeen++; }
+      }
+    } else if (s.mode === 'movie' && s.t < MOVIE_LEN) {
+      s.t++;
+      if (!s.adFree && !s.midrollDone && s.t === MIDROLL_AT) startBreak('mid');
+    }
+    render();
+  }
+
+  function play() {
+    s.mode = 'movie';
+    if (!s.adFree) startBreak('pre');
+    clearInterval(s.timer);
+    s.timer = setInterval(tick, 1000);
+    render();
+  }
+
+  function restart() {
+    if (s) clearInterval(s.timer);
+    s = fresh(heavy() ? 2 : 0);
+    closeSheet(true);
+    render();
+  }
+
+  // Sheet views
+  const money = (n) => '₹' + n;
+  function openSheet(html) {
+    sheet.innerHTML = '<div class="grab"></div>' + html;
+    sheet.classList.add('on'); scrim.classList.add('on');
+    s.paused = true; render();
+    const first = sheet.querySelector('button'); if (first) first.focus({ preventScroll: true });
+  }
+  function closeSheet(silent) {
+    sheet.classList.remove('on'); scrim.classList.remove('on');
+    if (!silent) { s.paused = false; render(); }
+  }
+
+  function showOffer() {
+    openSheet(`
+      <h3 id="sheetTitle">Tonight, uninterrupted.</h3>
+      <p>No ads on anything you watch for the next 24 hours. Pay once with UPI. Nothing renews.</p>
+      <div class="offer">
+        <div><div class="t">Movie night pass</div><div class="s">24 hours · every title · this device</div></div>
+        <div class="p">₹19</div>
+      </div>
+      <button class="cta" data-act="pay">Pay ₹19 with <span class="upi">UPI</span></button>
+      <button class="ghost" data-act="close">Keep watching with ads</button>
+      <div class="fine">What you spend on passes counts toward the yearly plan.</div>`);
+  }
+
+  function showPaying() {
+    openSheet(`<div class="state"><div class="spinner"></div><h3 id="sheetTitle">Approve in your UPI app</h3><p>Waiting for ₹19 to go through</p></div>`);
+    setTimeout(() => {
+      s.passes++;
+      if (s.passes >= 3) return showLadder();
+      showDone();
+    }, 1400);
+  }
+
+  function showDone() {
+    const until = new Date(Date.now() + 864e5).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    openSheet(`<div class="state"><div class="check" id="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#0B3D20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3 id="sheetTitle">No ads until ${until} tomorrow</h3><p>Back to the movie.</p></div>`);
+    requestAnimationFrame(() => requestAnimationFrame(() => $('chk')?.classList.add('on')));
+    setTimeout(goAdFree, 1500);
+  }
+
+  function showLadder() {
+    const spent = s.passes * 19, year = 699;
+    openSheet(`
+      <h3 id="sheetTitle">You have bought ${s.passes} passes this month</h3>
+      <p>That is ${money(spent)} so far. Make it the whole year instead and we will count what you already paid.</p>
+      <div class="math">
+        <span>Ad free for a year</span><span>${money(year)}</span>
+        <span>Already spent on passes</span><span>minus ${money(spent)}</span>
+        <span class="total">You pay today</span><span class="total">${money(year - spent)}</span>
+      </div>
+      <button class="cta" data-act="year">Get the year for ${money(year - spent)}</button>
+      <button class="ghost" data-act="done">Not now, just tonight</button>`);
+  }
+
+  function showYear() {
+    openSheet(`<div class="state"><div class="check" id="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#0B3D20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3 id="sheetTitle">Ad free for the next 12 months</h3><p>The three passes paid for part of it. Back to the movie.</p></div>`);
+    requestAnimationFrame(() => requestAnimationFrame(() => $('chk')?.classList.add('on')));
+    statusText.textContent = 'Ad free · yearly plan';
+    setTimeout(goAdFree, 1500, true);
+  }
+
+  function goAdFree(yearly) {
+    s.adFree = true;
+    if (!yearly) statusText.textContent = 'No ads · 23h 59m left';
+    if (s.mode === 'ad') { s.mode = 'movie'; if (s.break === 'mid') s.midrollDone = true; }
+    closeSheet();
+  }
+
+  sheet.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]')?.dataset.act;
+    if (act === 'pay') showPaying();
+    else if (act === 'close') closeSheet();
+    else if (act === 'done') showDone();
+    else if (act === 'year') showYear();
+  });
+  scrim.addEventListener('click', () => { if (sheet.querySelector('[data-act="close"]')) closeSheet(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet.querySelector('[data-act="close"]')) closeSheet(); });
+
+  $('playBtn').addEventListener('click', play);
+  chip.addEventListener('click', showOffer);
+  const heavy = () => heavyBtn.getAttribute('aria-pressed') === 'true';
+  $('restart').addEventListener('click', restart);
+  heavyBtn.addEventListener('click', () => { heavyBtn.setAttribute('aria-pressed', String(!heavy())); restart(); });
+
+  // Move the sheet out of a small player so it never scrolls inside a 200px frame
+  const player = $('player');
+  function layout() {
+    const compact = player.clientWidth < 560;
+    document.body.classList.toggle('compact', compact);
+    const home = compact ? document.body : player;
+    if (sheet.parentNode !== home) home.append(scrim, sheet);
+  }
+  new ResizeObserver(layout).observe(player);
+  layout();
+
+  restart();
+})();
+</script>
+</body>
+</html>

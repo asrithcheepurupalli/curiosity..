@@ -1,7 +1,7 @@
 ---
 title: "Why Can't I Pay 19 Rupees to Skip the Ads in One Movie?"
 date: "2026-10-01"
-readingTime: 6
+readingTime: 7
 description: "Prime Video lets you pay to remove ads for a whole year. Nobody sells you a single quiet evening. The math says they should."
 tags: ["technology", "money", "psychology", "interfaces"]
 ---
@@ -35,6 +35,12 @@ There are two real risks. The first is who leaves. The people most likely to buy
 The second risk is the monthly add on. Anyone who watches on fewer than seven days a month would spend less buying daily passes than paying 129. Some people would switch down. The fix is to make the pass a step on the way up instead of a way out: "You have spent 57 rupees on passes this month. Get the full year for 699 and we will count what you already paid." Every pass becomes a free trial of the bigger plan.
 
 There is also a competitor problem. JioCinema once sold an entire month of ad free premium for 29 rupees. Against that, 19 rupees for a single day sounds expensive. So the pass cannot be pitched as cheap. It has to be pitched as tonight, uninterrupted.
+
+So I built it, to see how it would feel. Press play, wait for the ad, and tap the green chip. Then try "Pretend this is my 3rd pass this month" to see the pass turn into an offer for the year.
+
+<iframe src="/pass/?embed" title="Movie Night Pass prototype" loading="lazy" style="width:100%;height:460px;border:0;border-radius:10px;display:block;margin:24px 0 8px;"></iframe>
+
+<a href="/pass/">Open the prototype on its own page</a>. The film, the ads and the brands in it are made up.
 
 ## Reflection
 
