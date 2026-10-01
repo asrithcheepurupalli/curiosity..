@@ -27,7 +27,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg); color: var(--text); font-family: var(--body); -webkit-font-smoothing: antialiased; }
 body { min-height: 100vh; padding: 32px 16px 48px; }
-body.embed { padding: 0; min-height: 0; background: transparent; }
+body.embed { padding: 0; min-height: 0; background: transparent; overflow: hidden; }
+html:has(body.embed) { overflow: hidden; background: transparent; }
 button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -334,12 +335,13 @@ body.compact .sheet { position: fixed; z-index: 21; width: 100%; max-width: 480p
   function openSheet(html) {
     sheet.innerHTML = '<div class="grab"></div>' + html;
     sheet.classList.add('on'); scrim.classList.add('on');
-    s.paused = true; render();
+    s.paused = true; render(); reportHeight();
     const first = sheet.querySelector('button'); if (first) first.focus({ preventScroll: true });
   }
   function closeSheet(silent) {
     sheet.classList.remove('on'); scrim.classList.remove('on');
     if (!silent) { s.paused = false; render(); }
+    reportHeight();
   }
 
   function showOffer() {
@@ -424,9 +426,20 @@ body.compact .sheet { position: fixed; z-index: 21; width: 100%; max-width: 480p
     document.body.classList.toggle('compact', compact);
     const home = compact ? document.body : player;
     if (sheet.parentNode !== home) home.append(scrim, sheet);
+    reportHeight();
   }
   new ResizeObserver(layout).observe(player);
   layout();
+
+  // Inside an essay: tell the parent page how tall we are, and grow while a small-screen sheet is open
+  function reportHeight() {
+    if (!document.body.classList.contains('embed') || window.parent === window) return;
+    let h = document.querySelector('.wrap').offsetHeight;
+    if (sheet.classList.contains('on') && document.body.classList.contains('compact')) h = Math.max(h, sheet.offsetHeight + 48);
+    window.parent.postMessage({ type: 'embed-height', height: h }, location.origin);
+  }
+  new ResizeObserver(reportHeight).observe(document.querySelector('.wrap'));
+  new ResizeObserver(reportHeight).observe(sheet);
 
   restart();
 })();

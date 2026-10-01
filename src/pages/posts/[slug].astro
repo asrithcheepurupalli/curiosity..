@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import '../../styles/essay-components.css';
 
 export async function getStaticPaths() {
   // Only build pages for published posts (not drafts, not future-dated).
@@ -105,6 +106,16 @@ const postJsonLd = {
   </script>
 
   <script>
+    // Embedded prototypes (same origin) report their content height so the frame never clips or leaves a gap.
+    window.addEventListener('message', (e) => {
+      if (e.origin !== location.origin || e.data?.type !== 'embed-height') return;
+      for (const f of document.querySelectorAll('iframe')) {
+        if (f.contentWindow === e.source) f.style.height = Math.ceil(e.data.height) + 'px';
+      }
+    });
+  </script>
+
+  <script>
     const bar = document.getElementById('reading-progress-bar');
     function updateProgress() {
       if (!bar) return;
@@ -136,6 +147,12 @@ const postJsonLd = {
 
       <article class="post-article">
         <header class="post-header">
+          {post.data.pinned && (
+            <p class="label post-pinned">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 3l5 5-3 1-4 4 1 5-2 2-4-4-5 5-1-1 5-5-4-4 2-2 5 1 4-4z"/></svg>
+              Special mention{post.data.pinnedLabel && <span> · {post.data.pinnedLabel}</span>}
+            </p>
+          )}
           <h1 class="post-title">{post.data.title}</h1>
           <div class="post-meta">
             <time class="label" datetime={post.data.date}>{formatDate(post.data.date)}</time>
@@ -266,6 +283,18 @@ const postJsonLd = {
     animation: fade-up 0.55s 0.1s ease both;
   }
 
+  .post-pinned {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+  }
+
+  .post-pinned span { color: var(--text-muted); }
+
   .post-title {
     font-family: var(--font-body);
     font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -390,7 +419,7 @@ const postJsonLd = {
     border-radius: 0;
   }
 
-  .post-content :global(p:last-child) {
+  .post-content > :global(p:last-child) {
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 0.75rem;
