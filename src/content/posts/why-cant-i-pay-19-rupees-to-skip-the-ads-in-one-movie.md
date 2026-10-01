@@ -4,6 +4,9 @@ date: "2026-10-01"
 readingTime: 7
 description: "Prime Video lets you pay to remove ads for a whole year. Nobody sells you a single quiet evening. The math says they should."
 tags: ["technology", "money", "psychology", "interfaces"]
+pinned: true
+pinnedLabel: "An essay with a working prototype"
+pinnedCta: { label: "Play the prototype", href: "/pass/" }
 ---
 
 ## Observation
